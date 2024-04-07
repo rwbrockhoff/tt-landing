@@ -1,10 +1,12 @@
 ---
-import {SITE_TITLE, SITE_DESCRIPTION} from "../constants"
-const {title = 'Pack organization for backpackers and travelers.'} = Astro.props;
+import Navbar from '~/components/navbar.astro';
+import Footer from '~/components/footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../constants';
+const { title = 'Pack organization for backpackers and travelers.' } = Astro.props;
 
 type Props = {
-    title?: string;
-}
+	title?: string;
+};
 ---
 
 <html lang="en">
@@ -13,10 +15,12 @@ type Props = {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-        <meta name="description" content={SITE_DESCRIPTION}/>
+		<meta name="description" content={SITE_DESCRIPTION} />
 		<title>{SITE_TITLE} - {title}</title>
 	</head>
 	<body>
-		<slot/>
+		<Navbar />
+		<slot />
+		<Footer />
 	</body>
 </html>
