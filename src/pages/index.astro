@@ -1,7 +1,20 @@
 ---
-import MainLayout from "../layouts/main-layout.astro"
+import MainLayout from '../layouts/main-layout.astro';
 ---
 
 <MainLayout>
-	<h1>Tidytrek</h1>
+	<nav class="bg-[#1d8471] h-24 flex items-center p-12">
+		<h1 class="text-white font-semibold text-2xl">tidytrek</h1>
+		<div class="ml-auto space-x-12">
+			<button class="text-white rounded">Login</button>
+			<button class="text-white rounded border-2 px-2 py-1">Sign Up</button>
+		</div>
+	</nav>
+	<div class="flex justify-center items-center flex-col h-screen bg-[#f2fbf8] space-y-8">
+		<h1 class="text-5xl md:text-6xl font-bold leading-tighter tracking-tighter font-heading dark:text-black">
+			Keep your pack tidy on all of your adventures.
+		</h1>
+		<p class="text-xl">used by thruhikers, backpackers, digital nomads, artists & more</p>
+		<button class="text-[#1d8471] border-2 border-[#1d8471] w-fit px-4 py-2 mt-8 rounded">Sign Up For Free</button>
+	</div>
 </MainLayout>
