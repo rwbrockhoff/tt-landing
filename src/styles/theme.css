@@ -1,0 +1,64 @@
+:root {
+	/* -- Colors -- */
+	--primary-50: #defdf7;
+	--primary-100: #b7faee;
+	--primary-200: #70f5dd;
+	--primary-300: #28f1cc;
+	--primary-400: #0dbf9f;
+	--primary-500: #087863;
+	--primary-600: #06604f;
+	--primary-700: #05483b;
+	--primary-800: #033028;
+	--primary-900: #021814;
+
+	/* -- Colors: Backgrounds -- */
+	--background-light: #f8f9fa;
+	--background-dark: #111827;
+
+	/* -- Font -- */
+	font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+
+	/* -- Font Sizes -- */
+	--font-size-xs: 0.75rem; /* 12px */
+	--font-size-sm: 0.875rem; /* 14px */
+	--font-size-base: 1rem; /* 16px */
+	--font-size-lg: 1.125rem; /* 18px */
+	--font-size-xl: 1.5rem; /* 24px */
+	--font-size-xxl: 2.5rem; /* 40px */
+
+	/* -- Font Weight -- */
+	--font-weight-light: 300;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+
+	/* -- Spacing -- */
+	--space-xxs: 0.25rem; /* 4px */
+	--space-xs: 0.5rem; /* 8px */
+	--space-sm: 0.75rem; /* 12px */
+	--space-md: 1rem; /* 16px */
+	--space-lg: 1.5rem; /* 24px */
+	--space-xl: 2rem; /* 32px */
+	--space-xxl: 3rem; /* 48px */
+
+	/* -- Breakpoints -- */
+	--breakpoint-xs: 0;
+	--breakpoint-sm: 576px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 992px;
+	--breakpoint-xl: 1200px;
+
+	/* -- Z-Index -- */
+	--z-index-dropdown: 100;
+	--z-index-modal: 200;
+	--z-index-tooltip: 300;
+
+	/* -- Headers -- */
+	h1 {
+		font-size: var(--font-size-xxl);
+	}
+
+	h2 {
+		font-size: var(--font-size-xl);
+	}
+}
