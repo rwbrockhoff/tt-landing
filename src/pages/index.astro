@@ -1,89 +1,59 @@
 ---
 import MainLayout from '../layouts/main-layout.astro';
+import swedenBackground from '../assets/sweden-background.png';
 ---
 
 <MainLayout>
-	<div id="container">
-		<main>
-			<div class="ridge-container">
-				<div id="result"></div>
-				<div class="content"></div>
-				<div class="filler"></div>
-				<section id="hero">
-					<h1 class="">Keep your pack tidy for all of your adventures.</h1>
-					<p>Used by backpackers, travelers, artists & more</p>
-					<button>
-						<a href="https://tidytrek.co/register" rel="noopener noreferrer">Sign Up Now</a>
-					</button>
-				</section>
-			</div>
-		</main>
-	</div>
+	<section id="hero" class="flex flex-col">
+		<div class="hero-image-wrapper" style={`background-image: url(${swedenBackground.src});`}>
+			<div class="hero-content readable-width w-full">
+				<h1>Keep your pack <em>tidy</em> for all of your adventures.</h1>
 
-	<script src="../scripts/ridges.js"></script>
+				<a href="https://tidytrek.co/register" rel="noopener noreferrer" class="cta-button" role="button">
+					Sign Up Now
+				</a>
+			</div>
+		</div>
+	</section>
 </MainLayout>
 
-<script src="../scripts/ridges.js"></script>
-
 <style>
-	div.ridge-container {
-		width: 100%;
-		display: grid;
-		grid-template-rows: 1fr auto auto 1fr;
-		min-height: 50vh;
-		background: var(--primary-100);
-		color: var(--primary-700);
-		font-size: 0px;
-	}
-
-	#result {
-		grid-row: 2;
-	}
-
-	svg {
-		display: block;
-	}
-
-	.content {
-		background: var(--primary-700);
-		grid-row: 3;
-		padding-top: 4rem;
-		padding-bottom: 2rem;
-		text-align: center;
-	}
-
-	.filler {
-		background: var(--primary-700);
-		grid-row: 4;
-	}
-
-	#container {
-		height: 100%;
-		position: relative;
-	}
-
-	main {
-		height: 100%;
-		display: flex;
-		justify-content: center;
-	}
-
 	#hero {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: center;
-		height: 40vh;
+		background-color: var(--primary-50);
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2375e0b2' fill-opacity='0.4'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 	}
 
-	@media screen and (max-width: 768px) {
-		#container {
-			display: flex;
-			flex-direction: column;
-		}
+	#hero .hero-image-wrapper {
+		height: 100vh;
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		animation: slideBackgroundUp 1s ease-in-out forwards;
+		/* filter: brightness(0.2); */
+	}
 
+	#hero .hero-content {
+		padding-top: 10em;
+	}
+
+	#hero h1 {
+		font-size: var(--font-size-4xl);
+		text-wrap: wrap; /* better visual flow than balanced */
+	}
+
+	@media (max-width: 1279px) {
+		#hero .hero-content {
+			padding-right: 40%; /* Limit width on medium screens */
+		}
+	}
+
+	@media (max-width: 768px) {
 		#hero {
 			display: block;
+		}
+
+		#hero .hero-content {
+			padding-right: var(--space-lg); /* Reduce padding on mobile */
 		}
 	}
 </style>

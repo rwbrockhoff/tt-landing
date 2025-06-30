@@ -1,27 +1,55 @@
-<nav>
-	<h2>
-		<a href="/"> tidytrek</a>
-	</h2>
-	<div class="auth-button-container">
-		<button class="button--outline"><a href="https://tidytrek.co/login" rel="noopener noreferrer">Login</a></button>
-		<button class="button--outline">
-			<a href="https://tidytrek.co/register" rel="noopener noreferrer">Sign Up</a></button
-		>
+<nav aria-label="Main navigation">
+	<div class="nav-wrapper readable-width flex items-center justify-between w-full h-full">
+		<h2 class="nav-logo-header m-0">
+			<a href="/" aria-label="TidyTrek home">tidytrek</a>
+		</h2>
+		<div class="auth-button-container flex gap-xl" role="group" aria-label="Authentication actions">
+			<a href="https://tidytrek.co/login" rel="noopener noreferrer" role="button">Login</a>
+			<a href="https://tidytrek.co/register" rel="noopener noreferrer" role="button">Sign Up</a>
+		</div>
 	</div>
 </nav>
 
 <style>
 	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 1rem 5rem;
-		background: var(--primary-100);
+		background-color: transparent;
+		height: var(--navbar-height);
+		position: fixed;
+		z-index: 100;
+		width: 100%;
+		top: 0;
+		transition:
+			background-color var(--transition),
+			backdrop-filter var(--transition);
 	}
 
-	.auth-button-container {
-		button {
-			margin: 0px 25px;
-		}
+	nav.scrolled {
+		background-color: var(--color-bg-primary-glass);
+		backdrop-filter: blur(15px) saturate(150%);
+		box-shadow: var(--shadow-paper);
 	}
 </style>
+
+<script>
+	const handleNavbarScroll = () => {
+		const navbar = document.querySelector('nav');
+		const scrollBoundary = 50;
+
+		const updateNavbar = () => {
+			if (window.scrollY > scrollBoundary) {
+				navbar?.classList.add('scrolled');
+			} else {
+				navbar?.classList.remove('scrolled');
+			}
+		};
+
+		window.addEventListener('scroll', updateNavbar);
+		updateNavbar();
+	};
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', handleNavbarScroll);
+	} else {
+		handleNavbarScroll();
+	}
+</script>

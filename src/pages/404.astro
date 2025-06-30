@@ -3,27 +3,23 @@ import MainLayout from '../layouts/main-layout.astro';
 ---
 
 <MainLayout title="404 - Page Not Found">
-	<main>
-		<section id="hero">
+	<section id="fourohfour-hero" class="bg-primary h-screen flex items-center justify-center">
+		<div class="message-box flex items-center justify-center flex-col text-center p-xl text-primary">
 			<h1>404</h1>
-			<h1>You went off trail!</h1>
+			<h2>You went off trail!</h2>
 			<p>The page you were looking for wasn't found.</p>
-			<button><a href="/">Back Home</a></button>
-		</section>
-	</main>
+			<a href="/" aria-label="Return to home page" role="button">Back Home</a>
+		</div>
+	</section>
 </MainLayout>
 
 <style>
-	main {
-		height: 80%;
+	#fourohfour-hero h1 {
+		font-size: 5rem;
+		margin: 0;
 	}
 
-	#hero {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		height: 80%;
+	#fourohfour-hero .message-box {
+		max-width: 600px;
 	}
 </style>

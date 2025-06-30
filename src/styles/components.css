@@ -1,27 +1,30 @@
+a[role='button'],
 button {
-	padding: var(--space-xs) var(--space-sm);
-	border-radius: 4px;
+	padding: var(--space-min) var(--space-sm);
+	border-radius: var(--radius);
 	font-size: var(--font-size-base);
 	font-weight: var(--font-weight-normal);
-	background-color: var(--primary-500);
+	background-color: var(--primary-600);
 	color: white;
 	transition: background-color 0.2s ease-in-out;
 	cursor: pointer;
 	border: none;
+	width: fit-content;
 }
 
+a[role='button'],
 button:hover {
-	background-color: var(--primary-600);
+	background-color: var(--primary-500);
 }
 
 /* Outline Button Variant */
-.button--outline {
+.button-outline {
 	background-color: transparent;
 	color: var(--primary-500);
 	border: 2px solid var(--primary-500);
 }
 
 /* Outline Button Hover */
-.button--outline:hover {
+.button-outline:hover {
 	background-color: var(--primary-200);
 }

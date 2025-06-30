@@ -1,6 +1,7 @@
 ---
 import '../styles/reset.css';
 import '../styles/theme.css';
+import '../styles/utilities.css';
 import '../styles/components.css';
 
 import Navbar from '~/components/navbar.astro';
@@ -21,13 +22,19 @@ type Props = {
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={SITE_DESCRIPTION} />
+		<meta property="og:title" content={`${SITE_TITLE} - ${title}`} />
+		<meta property="og:description" content={SITE_DESCRIPTION} />
+		<meta property="og:type" content="website" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<link rel="icon" type="image/x-icon" href={favIcon} />
 
 		<title>{SITE_TITLE} - {title}</title>
 	</head>
-	<body>
+	<body data-theme="light">
 		<Navbar />
-		<slot />
+		<main>
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>

@@ -1,15 +1,31 @@
-<footer>
-	<div>
-		<!-- <p>tidytrek</p>
-		<p>made in durango, colorado</p> -->
-	</div>
+<footer class="flex items-center justify-center flex-col gap-min p-sm">
+	<h3 class="logo-text"><strong>tidytrek</strong></h3>
+	<p>made in colorado</p>
+	<nav class="footer-links">
+		<a href="/privacy-policy">Privacy Policy</a>
+	</nav>
 </footer>
 
 <style>
 	footer {
 		background-color: var(--primary-900);
-		border: 0px;
-		margin: 0px;
-		height: 10vh;
+	}
+
+	footer * {
+		color: white;
+	}
+
+	.footer-links {
+		margin-top: var(--space-xs);
+	}
+
+	.footer-links a {
+		font-size: var(--font-size-sm);
+		opacity: 0.8;
+		transition: opacity var(--transition);
+	}
+
+	.footer-links a:hover {
+		opacity: 1;
 	}
 </style>
