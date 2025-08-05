@@ -1,0 +1,115 @@
+.grid-texture-layer {
+	position: absolute;
+	inset: 0;
+	background-image: url('/src/assets/textures/grid-pattern.svg');
+	background-size: 100px 100px;
+	background-repeat: repeat;
+	opacity: 0.4;
+	pointer-events: none;
+	z-index: -3;
+}
+
+.night-sky-layer {
+	position: absolute;
+	inset: 0;
+	background-image: url('/src/assets/textures/night-sky.svg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: 0.6;
+	pointer-events: none;
+	z-index: -3;
+	animation: skyDrift 20s infinite ease-in-out;
+}
+
+@keyframes skyDrift {
+	0% {
+		transform: translateX(0px);
+	}
+	50% {
+		transform: translateX(8px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
+
+[data-theme='light'] .grid-texture-layer {
+	display: block;
+}
+
+[data-theme='dark'] .grid-texture-layer {
+	display: none;
+}
+
+[data-theme='light'] .night-sky-layer {
+	display: none;
+}
+
+[data-theme='dark'] .night-sky-layer {
+	display: block;
+}
+
+.grainy-texture {
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.grainy-texture::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('/src/assets/textures/noise.svg');
+	opacity: 1;
+	mix-blend-mode: overlay;
+	pointer-events: none;
+	z-index: -2;
+}
+
+.grainy-texture-subtle::before {
+	opacity: 0.3;
+}
+
+.grainy-texture-strong::before {
+	opacity: 1;
+}
+
+.grainy-texture-multiply::before {
+	mix-blend-mode: multiply;
+}
+
+.grainy-texture-soft-light::before {
+	mix-blend-mode: soft-light;
+}
+
+.bg-image {
+	position: relative;
+	isolation: isolate;
+}
+
+.bg-image-layer {
+	position: absolute;
+	inset: 0;
+	background-size: contain;
+	background-repeat: no-repeat;
+	pointer-events: none;
+	z-index: -1;
+}
+
+/* darken mountain for night mode */
+[data-theme='dark'] .bg-image-layer {
+	filter: brightness(0.3) contrast(1.2);
+}
+
+.bg-image-bottom::after {
+	background-position: center bottom;
+}
+
+.bg-image-top::after {
+	background-position: center top;
+}
+
+.bg-image-center::after {
+	background-position: center center;
+}

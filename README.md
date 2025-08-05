@@ -1,23 +1,13 @@
 # TidyTrek Landing Site
 
-A modern, accessible landing page for TidyTrek - built with Astro
+Simple marketing landing page built with Astro. Uses CloudFront functions to route authenticated users directly to the app.
 
-## 🚀 Features
+## Additional Tidytrek Repos
 
-- **Static Site Generation** - Fast load times with Astro
-- **Accessible Design** - Semantic HTML with ARIA labels and keyboard navigation
-- **Responsive Design** - Mobile-first approach with fluid layouts
-- **CI/CD Deployment** - AWS S3 + CloudFront via GitHub Actions
-
-## 🛠️ Development
-
-```bash
-# Install dependencies
-npm ci
-
-# Start dev server
-npm run dev
-```
+- **Landing** (current repo)
+- **[Frontend](https://github.com/rwbrockhoff/tidytrek-frontend)** - React app
+- **[Backend](https://github.com/rwbrockhoff/tidytrek-backend)** - Node.js API
+- **[Live App](https://tidytrek.co)** - Production website
 
 ## 🚀 Deployment
 

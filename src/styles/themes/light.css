@@ -1,0 +1,49 @@
+[data-theme='light'] {
+	/* Primary colors */
+	--color-primary: var(--sage-500);
+	--color-primary-hover: var(--sage-600);
+	--color-primary-subtle: var(--sage-100);
+	--color-primary-emphasis: var(--sage-700);
+
+	/* Light theme shadows */
+	--shadow-classic: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 2px 1px -1px rgba(0, 0, 0, 0.1),
+		0 1px 3px 0 rgba(0, 0, 0, 0.1);
+	--shadow-spread: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+	--shadow-paper: 0px 8px 0px -6px rgba(0, 0, 0, 0.1);
+
+	/* Background colors */
+	--color-bg-primary: #ffffff;
+	--color-bg-secondary: var(--dune-50);
+	--color-bg-tertiary: var(--dune-100);
+	--color-bg-overlay: rgba(255, 255, 255, 0.9);
+	--color-bg-accent: #f2f5f4;
+
+	/* Text colors */
+	--color-text-primary: #000000;
+	--color-text-secondary: var(--gray-700);
+	--color-text-tertiary: var(--gray-500);
+	--color-text-inverse: #ffffff;
+
+	/* Border colors */
+	--color-border-primary: var(--gray-200);
+	--color-border-secondary: var(--gray-300);
+
+	/* Border styles */
+	--border-primary: 1px solid var(--gray-400);
+
+	/* Secondary brand color */
+	--color-secondary: var(--dune-500);
+	--color-secondary-hover: var(--dune-600);
+	--color-secondary-subtle: var(--dune-100);
+	--color-secondary-emphasis: var(--dune-700);
+
+	/* Interactive colors */
+	--color-hover: var(--gray-100);
+	--color-active: var(--gray-200);
+	--color-focus: var(--sage-500);
+
+	/* dune color shortcuts */
+	--color-dune-50: var(--dune-50);
+	--color-gray-400: var(--gray-400);
+	--color-gray-200: var(--gray-200);
+}

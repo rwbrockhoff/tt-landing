@@ -1,0 +1,93 @@
+---
+import { Check } from 'lucide-astro';
+---
+
+<section id="pricing" class="py-16 pricing-section">
+	<div class="readable-width">
+		<div class="text-center mb-8 md:mb-16">
+			<h3>Choose Your Plan</h3>
+			<p class="text-lg mt-4">Start free, upgrade when you need more features</p>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 max-w-4xl mx-auto">
+			<div class="pricing-card p-8 text-center hover-lift">
+				<h3 class="mb-4">Free Explorer</h3>
+				<div class="price mb-6">
+					<span class="text-4xl font-bold">$0</span>
+					<span class="text-lg">/month</span>
+				</div>
+				<ul class="text-left mb-8 space-y-3">
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> 3 pack lists</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Gear closet for organization</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Mobile app access</li>
+				</ul>
+				<a href="https://tidytrek.co/register" class="btn-outline w-full" role="button">Join For Free</a>
+			</div>
+			<div class="pricing-card p-8 text-center featured hover-lift">
+				<div class="popular-badge">Support Our Small Business</div>
+				<h3 class="mb-4">Trail Blazer</h3>
+				<div class="price mb-6">
+					<span class="text-4xl font-bold">$5</span>
+					<span class="text-lg">/month</span>
+				</div>
+				<ul class="text-left mb-8 space-y-3">
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Unlimited pack lists</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Photo attachments</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Gear closet for organization</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Mobile app access</li>
+					<li class="flex items-center">
+						<Check class="w-4 h-4 mr-2 text-sage-500" /> Pack view analytics (coming soon)
+					</li>
+				</ul>
+				<a href="https://tidytrek.co/register" class="btn-primary w-full" role="button">Get Started</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.pricing-section {
+		background-color: var(--color-bg-primary);
+	}
+
+	.pricing-card {
+		background-color: var(--color-bg-secondary);
+		border-radius: 1.5rem;
+		border: var(--border-primary);
+		transition: all var(--transition);
+		position: relative;
+	}
+
+	.pricing-card:hover {
+		box-shadow: var(--shadow-paper);
+	}
+
+	.pricing-card.featured {
+		border-color: var(--color-primary);
+		transform: scale(1.05);
+	}
+
+	.pricing-card.featured:hover {
+		transform: scale(1.05) translateY(-6px);
+	}
+
+	.popular-badge {
+		position: absolute;
+		top: -12px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: var(--color-primary);
+		color: white;
+		padding: var(--space-1) var(--space-3);
+		border-radius: var(--radius);
+		font-size: var(--font-size-2);
+		font-weight: var(--font-weight-semibold);
+	}
+
+	.price {
+		color: var(--color-primary);
+	}
+
+	.pricing-card ul li {
+		color: var(--color-text-primary);
+	}
+</style>

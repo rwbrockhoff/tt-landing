@@ -1,0 +1,129 @@
+---
+import { Sun, Moon } from 'lucide-astro';
+---
+
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+	<Sun class="icon-sun w-5 h-5" />
+	<Moon class="icon-moon w-5 h-5" />
+</button>
+
+<script>
+	const setTheme = (theme: string) => {
+		document.documentElement.setAttribute('data-theme', theme);
+		localStorage.setItem('theme', theme);
+	};
+
+	const toggleTheme = () => {
+		const currentTheme = localStorage.getItem('theme') || 'light';
+		const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+		setTheme(newTheme);
+	};
+
+	const getPreferredTheme = () => {
+		const savedTheme = localStorage.getItem('theme');
+		if (savedTheme) return savedTheme;
+		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+	};
+
+	const initTheme = () => {
+		setTheme(getPreferredTheme());
+		const themeToggle = document.getElementById('theme-toggle');
+		if (themeToggle) {
+			themeToggle.removeEventListener('click', toggleTheme);
+			themeToggle.addEventListener('click', toggleTheme);
+		}
+	};
+
+	document.addEventListener('DOMContentLoaded', initTheme);
+	document.addEventListener('astro:page-load', initTheme);
+
+	window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+		if (!localStorage.getItem('theme')) {
+			setTheme(e.matches ? 'dark' : 'light');
+		}
+	});
+</script>
+
+<style>
+	.theme-toggle {
+		background: none;
+		border: none;
+		cursor: pointer;
+		width: 40px;
+		height: 40px;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform var(--transition);
+		color: var(--color-text-primary);
+		border-radius: var(--radius);
+	}
+
+	.theme-toggle:hover {
+		transform: scale(1.1);
+		background-color: rgba(0, 0, 0, 0.1);
+	}
+
+	/* Dark mode hover - lighter overlay */
+	:global([data-theme='dark']) .theme-toggle:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+
+	/* When navbar is NOT scrolled (transparent), use theme appropriate icons */
+	:global(nav:not(.scrolled)) .theme-toggle svg {
+		color: var(--color-text-primary);
+	}
+
+	/* Dark mode override - use white icons when not scrolled */
+	:global([data-theme='dark']) :global(nav:not(.scrolled)) .theme-toggle svg {
+		color: white;
+	}
+
+	.theme-toggle svg {
+		position: absolute;
+		transition: opacity var(--transition);
+	}
+
+	.icon-sun {
+		animation: rotate 20s linear infinite;
+	}
+
+	@keyframes rotate {
+		from {
+			transform: rotate(0deg);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	:root .icon-moon {
+		opacity: 0;
+	}
+
+	:root .icon-sun {
+		opacity: 1;
+	}
+
+	:global([data-theme='dark']) .icon-sun {
+		opacity: 0;
+	}
+
+	:global([data-theme='dark']) .icon-moon {
+		opacity: 1;
+		animation: moonPulse 4s infinite ease-in-out;
+	}
+
+	@keyframes moonPulse {
+		0% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.1);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+</style>

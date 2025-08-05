@@ -1,30 +1,98 @@
-a[role='button'],
-button {
-	padding: var(--space-min) var(--space-sm);
-	border-radius: var(--radius);
-	font-size: var(--font-size-base);
-	font-weight: var(--font-weight-normal);
-	background-color: var(--primary-600);
-	color: white;
-	transition: background-color 0.2s ease-in-out;
+.btn-primary,
+.btn-secondary,
+.btn-sierra,
+.btn-outline,
+.btn-outline-sierra {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--space-1) var(--space-4);
+	border-radius: var(--radius-md);
+	font-weight: var(--font-weight-semibold);
+	text-decoration: none;
+	transition: all var(--transition);
 	cursor: pointer;
-	border: none;
-	width: fit-content;
+	border: 2px solid transparent;
+	position: relative;
+	overflow: hidden;
 }
 
-a[role='button'],
-button:hover {
-	background-color: var(--primary-500);
+.btn-primary {
+	background-color: var(--color-primary);
+	color: white;
+	border-color: var(--color-primary);
 }
 
-/* Outline Button Variant */
-.button-outline {
+.btn-primary:hover {
+	background-color: var(--color-primary-hover);
+	border-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+	background-color: var(--color-secondary);
+	color: white;
+	border-color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+	background-color: var(--color-secondary-hover);
+	border-color: var(--color-secondary-hover);
+}
+
+.btn-outline {
 	background-color: transparent;
-	color: var(--primary-500);
-	border: 2px solid var(--primary-500);
+	color: var(--color-primary);
+	border-color: var(--color-primary);
 }
 
-/* Outline Button Hover */
-.button-outline:hover {
-	background-color: var(--primary-200);
+.btn-sierra {
+	background-color: var(--sierra-500);
+	color: white;
+	border-color: var(--sierra-500);
+}
+
+.btn-sierra:hover {
+	background-color: var(--sierra-600);
+	border-color: var(--sierra-600);
+}
+
+.btn-outline {
+	background-color: transparent;
+	color: var(--color-primary);
+	border-color: var(--color-primary);
+}
+
+.btn-outline:hover {
+	background-color: var(--color-primary);
+	color: white;
+}
+
+.btn-outline-sierra {
+	background-color: transparent;
+	color: var(--sierra-500);
+	border-color: var(--sierra-500);
+}
+
+.btn-outline-sierra:hover {
+	background-color: var(--sierra-500);
+	color: white;
+}
+
+/* Focus styles */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+	outline: 2px solid var(--color-focus);
+	outline-offset: 2px;
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-outline:focus-visible,
+.btn-outline-sierra:focus-visible {
+	outline: 2px solid var(--color-focus);
+	outline-offset: 2px;
 }

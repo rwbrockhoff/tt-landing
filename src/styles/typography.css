@@ -1,0 +1,65 @@
+/* Typography base styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--color-text-primary);
+	line-height: 1.25;
+	letter-spacing: -0.025em;
+}
+
+p {
+	color: var(--color-text-primary);
+	line-height: 1.5;
+}
+
+h1 {
+	font-size: 3.75rem;
+	font-weight: 800;
+}
+
+h2 {
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+h3 {
+	font-size: 1.875rem;
+	font-weight: 700;
+}
+
+h4 {
+	font-size: 1.5rem;
+	font-weight: 600;
+}
+
+h5 {
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+h6 {
+	font-size: 1.125rem;
+	font-weight: 500;
+}
+
+/* Font family utilities */
+.font-sans {
+	font-family: var(--font-sans);
+}
+
+.font-mono {
+	font-family: var(--font-mono);
+	letter-spacing: 0.025em;
+}
+
+/* Links */
+a {
+	transition: all var(--transition) ease;
+}
+
+a:hover {
+	opacity: 0.9;
+}

@@ -1,0 +1,137 @@
+---
+import { Backpack, MapPin } from 'lucide-astro';
+import desktopPreview from '../../assets/desktop-preview.png';
+import desktopPreviewDark from '../../assets/desktop-preview-dark.png';
+import mountainLandscape from '../../assets/mountain-landscape.png';
+---
+
+<section
+	id="hero"
+	class="min-h-screen flex items-center justify-center bg-image"
+	style={`--bg-image: url('${mountainLandscape.src}'); --bg-position: center calc(100% + 30vh);`}>
+	<div class="grid-texture-layer"></div>
+	<div class="night-sky-layer"></div>
+	<div
+		class="bg-image-layer"
+		style={`background-image: url('${mountainLandscape.src}'); background-position: center calc(100% + 30vh);`}>
+	</div>
+	<div class="readable-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+		<div class="flex flex-col gap-6 order-2 lg:order-1">
+			<h1>The prettiest way to pack for any adventure.</h1>
+			<p class="hero-subtitle max-w-2xl">
+				The ultimate gear organization platform for outdoor enthusiasts. Create perfect packing lists, track weights,
+				and never forget essential equipment on your next adventure.
+			</p>
+			<div class="hero-actions flex gap-4 flex-col sm:flex-row">
+				<a href="https://tidytrek.co/register" class="btn-sierra" role="button">
+					<Backpack class="w-5 h-5 mr-2" />
+					View A Pack
+				</a>
+				<a href="#features" class="btn-outline-sierra" role="button">
+					<MapPin class="w-5 h-5 mr-2" />
+					Explore Features
+				</a>
+			</div>
+		</div>
+		<div class="hero-preview order-1 lg:order-2 hover-lift">
+			<img
+				src={desktopPreview.src}
+				alt="TidyTrek desktop app preview showing pack list interface"
+				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light"
+			/>
+			<img
+				src={desktopPreviewDark.src}
+				alt="TidyTrek desktop app preview showing pack list interface in dark mode"
+				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark"
+			/>
+		</div>
+	</div>
+</section>
+
+<style>
+	#hero {
+		position: relative;
+		background-color: var(--color-bg-secondary);
+		padding-bottom: 15vh;
+	}
+
+	/* night sky gradient */
+	:global([data-theme='dark']) #hero {
+		background: linear-gradient(180deg, rgba(19, 39, 62, 1) 0%, rgba(19, 39, 62, 1) 50%, rgba(17, 79, 150, 1) 100%);
+	}
+
+	#hero h1 {
+		font-size: 4rem;
+		font-weight: 800;
+		letter-spacing: -0.025em;
+	}
+
+	.hero-subtitle {
+		font-size: var(--font-size-5);
+		color: var(--color-text-primary);
+	}
+
+	.hero-preview img {
+		box-shadow: var(--shadow-paper);
+	}
+
+	.hero-preview {
+		position: relative;
+	}
+
+	.desktop-preview-light,
+	.desktop-preview-dark {
+		border: var(--border-primary);
+		border-radius: 1.5rem;
+		transition: all var(--transition);
+	}
+
+	.desktop-preview-light {
+		display: block;
+	}
+
+	.desktop-preview-dark {
+		display: none;
+	}
+
+
+	:global([data-theme='light']) .desktop-preview-light {
+		display: block;
+	}
+
+	:global([data-theme='light']) .desktop-preview-dark {
+		display: none;
+	}
+
+	:global([data-theme='dark']) .desktop-preview-light {
+		display: none;
+	}
+
+	:global([data-theme='dark']) .desktop-preview-dark {
+		display: block;
+	}
+
+	.desktop-behind-mountain {
+		position: relative;
+		z-index: -1;
+		border-radius: 1.5rem;
+	}
+
+	@media (max-width: 1024px) {
+		#hero {
+			min-height: auto;
+			padding-top: calc(var(--navbar-height) + var(--space-12));
+			padding-bottom: var(--space-12);
+		}
+	}
+
+	@media (max-width: 768px) {
+		#hero h1 {
+			font-size: var(--font-size-8);
+		}
+
+		.hero-subtitle {
+			font-size: var(--font-size-4);
+		}
+	}
+</style>

@@ -1,0 +1,21 @@
+/* Layout utilities */
+
+/* Readable width container - full width on mobile, max width on desktop */
+.readable-width {
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 var(--space-4);
+}
+
+@media (min-width: 768px) {
+	.readable-width {
+		max-width: 1280px;
+		padding: 0 var(--space-8);
+	}
+}
+
+@media (min-width: 1280px) {
+	.readable-width {
+		padding: 0;
+	}
+}

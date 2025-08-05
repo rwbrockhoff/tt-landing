@@ -1,12 +1,18 @@
 ---
 import '../styles/reset.css';
-import '../styles/theme.css';
+import '../styles/tailwind.css';
+import '../styles/themes/base.css';
+import '../styles/themes/light.css';
+import '../styles/themes/dark.css';
+import '../styles/typography.css';
+import '../styles/layout.css';
+import '../styles/effects.css';
 import '../styles/utilities.css';
 import '../styles/components.css';
 
 import Navbar from '~/components/navbar.astro';
 import Footer from '~/components/footer.astro';
-import favIcon from '~/../public/favicon.ico';
+import favIcon from '/landing/favicon.ico';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../constants';
 const { title = 'Pack organization for backpackers and travelers.' } = Astro.props;
@@ -16,7 +22,7 @@ type Props = {
 };
 ---
 
-<html lang="en">
+<html lang="en" data-theme="light">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -28,9 +34,19 @@ type Props = {
 		<meta name="twitter:card" content="summary_large_image" />
 		<link rel="icon" type="image/x-icon" href={favIcon} />
 
+		<script>
+			// Initialize theme before page renders to prevent flash
+			(function() {
+				const savedTheme = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+				document.documentElement.setAttribute('data-theme', theme);
+			})();
+		</script>
+
 		<title>{SITE_TITLE} - {title}</title>
 	</head>
-	<body data-theme="light">
+	<body>
 		<Navbar />
 		<main>
 			<slot />
@@ -38,3 +54,14 @@ type Props = {
 		<Footer />
 	</body>
 </html>
+
+<style>
+	body {
+		background-color: var(--color-bg-primary);
+	}
+
+	main {
+		background-color: var(--color-bg-primary);
+		min-height: 100vh;
+	}
+</style>
