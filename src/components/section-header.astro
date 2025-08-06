@@ -1,0 +1,15 @@
+---
+interface Props {
+	title: string;
+	subtitle?: string;
+	centered?: boolean;
+	textColor?: 'default' | 'white';
+}
+
+const { title, subtitle, centered = true, textColor = 'default' } = Astro.props;
+---
+
+<div class={`section-header ${centered ? 'text-center' : ''} mb-8 md:mb-16`}>
+	<h3 class={textColor === 'white' ? 'text-white' : ''}>{title}</h3>
+	{subtitle && <p class={`text-lg mt-4 ${textColor === 'white' ? 'text-white' : ''}`}>{subtitle}</p>}
+</div>

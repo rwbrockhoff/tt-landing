@@ -1,0 +1,74 @@
+---
+import { Backpack, Palette, Share2 } from 'lucide-astro';
+import SectionHeader from '../../components/section-header.astro';
+---
+
+<section id="features" class="py-16 features-section">
+	<div class="readable-width">
+		<SectionHeader
+			title="Plan Better. Pack Smarter."
+			subtitle="Streamline your gear, track weight, and plan every trip with confidence."
+		/>
+		<div class="grid-responsive-3">
+			<div class="feature-card text-center p-8 flex flex-col gap-4 hover-lift">
+				<div class="feature-icon-wrapper">
+					<Backpack class="feature-icon" />
+				</div>
+				<h3>Stay Organized</h3>
+				<p>Create customized packing lists for any trip. Whether it's for weekend trips or your next thru-hike.</p>
+			</div>
+			<div class="feature-card text-center p-8 flex flex-col gap-4 hover-lift">
+				<div class="feature-icon-wrapper">
+					<Share2 class="feature-icon" />
+				</div>
+				<h3>Share Your Pack</h3>
+				<p>Easily share a link to your pack with others to share favorite gear or get feedback for an upcoming trip.</p>
+			</div>
+			<div class="feature-card text-center p-8 flex flex-col gap-4 hover-lift">
+				<div class="feature-icon-wrapper">
+					<Palette class="feature-icon" />
+				</div>
+				<h3>Customize Your Styles</h3>
+				<p>Choose a color theme to match your vibe, upload photos, and customize your profile.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.features-section {
+		background-color: var(--color-bg-primary);
+	}
+
+	.feature-card {
+		border-radius: 1.5rem;
+		border: var(--border-primary);
+		transition: all var(--transition);
+		backdrop-filter: blur(10px);
+		position: relative;
+		overflow: hidden;
+		background-color: var(--color-bg-secondary);
+	}
+
+	.feature-card:hover {
+		box-shadow: var(--shadow-paper);
+	}
+
+	.feature-icon-wrapper {
+		width: 3rem;
+		height: 3rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-inline: auto;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.feature-icon {
+		width: 2rem;
+		height: 2rem;
+		color: var(--color-primary);
+		z-index: 2;
+	}
+</style>

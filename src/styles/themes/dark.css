@@ -1,0 +1,49 @@
+[data-theme='dark'] {
+	/* Primary colors */
+	--color-primary: var(--sage-500);
+	--color-primary-hover: var(--sage-300);
+	--color-primary-subtle: var(--sage-900);
+	--color-primary-emphasis: var(--sage-200);
+
+	/* Dark theme shadows */
+	--shadow-classic: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.3),
+		0 2px 1px -1px rgba(0, 0, 0, 0.3), 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+	--shadow-spread: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+	--shadow-paper: 0px 8px 0px -4px rgba(0, 0, 0, 0.6);
+
+	/* Background colors */
+	--color-bg-primary: var(--sage-900);
+	--color-bg-secondary: var(--sage-700);
+	--color-bg-tertiary: var(--sage-500);
+	--color-bg-overlay: rgba(23, 61, 48, 0.9);
+	--color-bg-accent: #1a2e24;
+
+	/* Text colors */
+	--color-text-primary: #ffffff;
+	--color-text-secondary: var(--gray-300);
+	--color-text-tertiary: var(--gray-400);
+	--color-text-inverse: var(--gray-900);
+
+	/* Border colors */
+	--color-border-primary: var(--gray-700);
+	--color-border-secondary: var(--gray-600);
+
+	/* Border styles */
+	--border-primary: 1px solid var(--gray-600);
+
+	/* Secondary brand color */
+	--color-secondary: var(--dune-400);
+	--color-secondary-hover: var(--dune-300);
+	--color-secondary-subtle: var(--dune-900);
+	--color-secondary-emphasis: var(--dune-200);
+
+	/* Interactive colors */
+	--color-hover: var(--gray-700);
+	--color-active: var(--gray-600);
+	--color-focus: var(--sage-500);
+
+	/* dune color shortcuts */
+	--color-dune-50: var(--sage-800); /* darker alternative for dark mode */
+	--color-gray-400: var(--gray-600);
+	--color-gray-200: var(--gray-700);
+}

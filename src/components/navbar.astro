@@ -1,11 +1,16 @@
+---
+import ThemeToggle from './theme-toggle.astro';
+---
+
 <nav aria-label="Main navigation">
 	<div class="nav-wrapper readable-width flex items-center justify-between w-full h-full">
-		<h2 class="nav-logo-header m-0">
+		<h4 class="nav-logo-header m-0">
 			<a href="/" aria-label="TidyTrek home">tidytrek</a>
-		</h2>
-		<div class="auth-button-container flex gap-xl" role="group" aria-label="Authentication actions">
-			<a href="https://tidytrek.co/login" rel="noopener noreferrer" role="button">Login</a>
-			<a href="https://tidytrek.co/register" rel="noopener noreferrer" role="button">Sign Up</a>
+		</h4>
+		<div class="auth-button-container flex items-center gap-8" role="group" aria-label="Authentication actions">
+			<ThemeToggle />
+			<a href="https://tidytrek.co/login" rel="noopener noreferrer" class="btn-primary" role="button">Login</a>
+			<a href="https://tidytrek.co/register" rel="noopener noreferrer" class="btn-primary desktop-only" role="button">Sign Up</a>
 		</div>
 	</div>
 </nav>
@@ -24,9 +29,35 @@
 	}
 
 	nav.scrolled {
-		background-color: var(--color-bg-primary-glass);
+		background-color: var(--color-bg-secondary);
 		backdrop-filter: blur(15px) saturate(150%);
-		box-shadow: var(--shadow-paper);
+		border-bottom: var(--border-primary);
+	}
+
+	.nav-logo-header {
+		font-weight: 700;
+		letter-spacing: -0.5px;
+	}
+
+	.nav-logo-header a {
+		color: var(--color-text-primary);
+		text-decoration: none;
+	}
+
+	/* When navbar is NOT scrolled (transparent), use theme appropriate text */
+	nav:not(.scrolled) .nav-logo-header a {
+		color: var(--color-text-primary);
+	}
+
+	/* Dark mode override - use white text when not scrolled */
+	:global([data-theme='dark']) nav:not(.scrolled) .nav-logo-header a {
+		color: white;
+	}
+
+	@media (max-width: 768px) {
+		.desktop-only {
+			display: none;
+		}
 	}
 </style>
 

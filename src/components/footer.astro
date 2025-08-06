@@ -1,31 +1,54 @@
-<footer class="flex items-center justify-center flex-col gap-min p-sm">
-	<h3 class="logo-text"><strong>tidytrek</strong></h3>
-	<p>made in colorado</p>
-	<nav class="footer-links">
-		<a href="/privacy-policy">Privacy Policy</a>
-	</nav>
+---
+import { MapPin, Mail } from 'lucide-astro';
+---
+
+<footer class="py-8" style="background-color: var(--sage-900);">
+	<div class="readable-width">
+		<div class="flex flex-col md:flex-row justify-between items-center gap-6">
+			<div class="text-center md:text-left">
+				<h3 class="text-xl font-bold mb-2">tidytrek</h3>
+				<div class="flex items-center gap-2 justify-center md:justify-start footer-location">
+					<MapPin class="w-4 h-4" />
+					<span class="text-sm">Made in Colorado</span>
+				</div>
+			</div>
+
+			<div class="flex gap-8 text-sm footer-links">
+				<a href="/privacy-policy">Privacy</a>
+				<a href="/terms-of-service">Terms of Service</a>
+				<a href="mailto:info@tidytrek.co"> Contact </a>
+			</div>
+		</div>
+
+		<div class="border-t mt-6 pt-6 text-center footer-border">
+			<p class="text-sm footer-copyright">&copy; 2024-2025 TidyTrek. All rights reserved.</p>
+		</div>
+	</div>
 </footer>
 
 <style>
-	footer {
-		background-color: var(--primary-900);
-	}
-
 	footer * {
 		color: white;
 	}
 
-	.footer-links {
-		margin-top: var(--space-xs);
+	.footer-location {
+		opacity: 0.8;
 	}
 
 	.footer-links a {
-		font-size: var(--font-size-sm);
 		opacity: 0.8;
 		transition: opacity var(--transition);
 	}
 
 	.footer-links a:hover {
 		opacity: 1;
+	}
+
+	.footer-border {
+		border-color: rgba(255, 255, 255, 0.2);
+	}
+
+	.footer-copyright {
+		opacity: 0.6;
 	}
 </style>

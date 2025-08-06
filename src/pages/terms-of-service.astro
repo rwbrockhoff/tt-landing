@@ -1,18 +1,18 @@
 ---
 import MainLayout from '../layouts/main-layout.astro';
-import PrivacyContent from '../components/legal/privacy-policy-content.astro';
+import TermsofServiceContent from '../components/legal/terms-of-service-content.astro';
 ---
 
-<MainLayout title="Privacy Policy">
-	<div class="privacy-page">
+<MainLayout title="Terms of Service">
+	<div class="terms-of-service-page">
 		<div class="readable-width">
-			<PrivacyContent />
+			<TermsofServiceContent />
 		</div>
 	</div>
 </MainLayout>
 
 <style>
-	.privacy-page {
+	.terms-of-service-page {
 		min-height: 100%;
 		padding-top: calc(var(--navbar-height) + var(--space-8));
 		padding-bottom: var(--space-12);

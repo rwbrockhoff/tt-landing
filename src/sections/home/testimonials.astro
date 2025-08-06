@@ -1,0 +1,84 @@
+---
+import { Users } from 'lucide-astro';
+---
+
+<section id="testimonials" class="py-16 grainy-texture testimonials-bg">
+	<div class="readable-width">
+		<div class="text-center mb-16">
+			<h2>Trusted by Trail Blazers Everywhere</h2>
+			<p class="text-lg mt-4">Join thousands of adventurers who pack smarter with TidyTrek</p>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			<div class="testimonial-card p-6">
+				<p class="mb-4">"Game changer for my backpacking trips. I never forget essential gear anymore!"</p>
+				<div class="flex items-center">
+					<div class="avatar mr-3">
+						<Users class="w-5 h-5" />
+					</div>
+					<div>
+						<div class="font-semibold">Alex Chen</div>
+						<div class="text-sm opacity-75">Thru-hiker</div>
+					</div>
+				</div>
+			</div>
+			<div class="testimonial-card p-6">
+				<p class="mb-4">"The weight tracking feature helped me cut 5 pounds from my base weight."</p>
+				<div class="flex items-center">
+					<div class="avatar mr-3">
+						<Users class="w-5 h-5" />
+					</div>
+					<div>
+						<div class="font-semibold">Sarah Johnson</div>
+						<div class="text-sm opacity-75">Ultralight Backpacker</div>
+					</div>
+				</div>
+			</div>
+			<div class="testimonial-card p-6">
+				<p class="mb-4">"Perfect for organizing gear for our family camping trips. Kids love checking items off!"</p>
+				<div class="flex items-center">
+					<div class="avatar mr-3">
+						<Users class="w-5 h-5" />
+					</div>
+					<div>
+						<div class="font-semibold">Mike Rodriguez</div>
+						<div class="text-sm opacity-75">Family Camper</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+
+	.testimonials-bg {
+		background: linear-gradient(45deg, var(--sage-400) 0%, var(--sage-500) 100%);
+		position: relative;
+	}
+
+	.testimonial-card {
+		background: rgba(255, 255, 255, 0.9);
+		border-radius: 1.5rem;
+		border: 1px solid rgba(255, 255, 255, 0.4);
+		transition: all var(--transition);
+		backdrop-filter: blur(15px);
+		position: relative;
+	}
+
+	.testimonial-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+		border-color: rgba(255, 255, 255, 0.6);
+	}
+
+	.avatar {
+		width: 40px;
+		height: 40px;
+		border-radius: var(--radius-circle);
+		background-color: var(--color-bg-secondary);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.25rem;
+	}
+</style>
