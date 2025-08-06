@@ -2,11 +2,11 @@
 	"name": "tt-landing",
 	"type": "module",
 	"version": "0.0.1",
-	"author": "Ryan Brockhoff <ryanbrockhoff@proton.me>",
+	"author": "Ryan Brockhoff <ryanbrockhoff@protonmail.com>",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro check && astro build",
+		"build": "PUBLIC_BASE_PATH=/landing astro check && PUBLIC_BASE_PATH=/landing astro build",
 		"preview": "astro preview",
 		"astro": "astro"
 	},

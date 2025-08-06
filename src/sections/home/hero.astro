@@ -1,8 +1,8 @@
 ---
 import { Backpack, MapPin } from 'lucide-astro';
-import desktopPreview from '../../assets/desktop-preview.png';
-import desktopPreviewDark from '../../assets/desktop-preview-dark.png';
-import mountainLandscape from '../../assets/mountain-landscape.png';
+import desktopPreview from '../../assets/hero/desktop-preview.png';
+import desktopPreviewDark from '../../assets/hero/desktop-preview-dark.png';
+import mountainLandscape from '../../assets/hero/mountain-landscape.png';
 ---
 
 <section
@@ -18,12 +18,11 @@ import mountainLandscape from '../../assets/mountain-landscape.png';
 	<div class="readable-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 		<div class="flex flex-col gap-6 order-2 lg:order-1">
 			<h1>The prettiest way to pack for any adventure.</h1>
-			<p class="hero-subtitle max-w-2xl">
-				The ultimate gear organization platform for outdoor enthusiasts. Create perfect packing lists, track weights,
-				and never forget essential equipment on your next adventure.
+			<p class="hero-subtitle font-mono max-w-2xl">
+				Smarter gear planning for backpackers & adventurers. Get tidy. Get out there.
 			</p>
 			<div class="hero-actions flex gap-4 flex-col sm:flex-row">
-				<a href="https://tidytrek.co/register" class="btn-sierra" role="button">
+				<a href="https://tidytrek.co/pk/0bkgbN" class="btn-sierra" role="button">
 					<Backpack class="w-5 h-5 mr-2" />
 					View A Pack
 				</a>
@@ -93,7 +92,6 @@ import mountainLandscape from '../../assets/mountain-landscape.png';
 	.desktop-preview-dark {
 		display: none;
 	}
-
 
 	:global([data-theme='light']) .desktop-preview-light {
 		display: block;

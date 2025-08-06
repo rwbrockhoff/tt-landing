@@ -1,13 +1,13 @@
 ---
-import { Backpack, MapPin, Share2 } from 'lucide-astro';
+import { Backpack, Palette, Share2 } from 'lucide-astro';
 import SectionHeader from '../../components/section-header.astro';
 ---
 
 <section id="features" class="py-16 features-section">
 	<div class="readable-width">
-		<SectionHeader 
-			title="Your Trail Companion for Every Adventure"
-			subtitle="Streamline your gear management with powerful tools designed for outdoor enthusiasts."
+		<SectionHeader
+			title="Plan Better. Pack Smarter."
+			subtitle="Streamline your gear, track weight, and plan every trip with confidence."
 		/>
 		<div class="grid-responsive-3">
 			<div class="feature-card text-center p-8 flex flex-col gap-4 hover-lift">
@@ -26,10 +26,10 @@ import SectionHeader from '../../components/section-header.astro';
 			</div>
 			<div class="feature-card text-center p-8 flex flex-col gap-4 hover-lift">
 				<div class="feature-icon-wrapper">
-					<MapPin class="feature-icon" />
+					<Palette class="feature-icon" />
 				</div>
-				<h3>Trip Planning</h3>
-				<p>Plan your adventures with detailed gear recommendations based on weather and terrain.</p>
+				<h3>Customize Your Styles</h3>
+				<p>Choose a color theme to match your vibe, upload photos, and customize your profile.</p>
 			</div>
 		</div>
 	</div>
@@ -57,8 +57,6 @@ import SectionHeader from '../../components/section-header.astro';
 	.feature-icon-wrapper {
 		width: 3rem;
 		height: 3rem;
-		border-radius: 50%;
-		background: linear-gradient(45deg, var(--sage-500), var(--sage-600));
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -70,7 +68,7 @@ import SectionHeader from '../../components/section-header.astro';
 	.feature-icon {
 		width: 2rem;
 		height: 2rem;
-		color: white;
+		color: var(--color-primary);
 		z-index: 2;
 	}
 </style>

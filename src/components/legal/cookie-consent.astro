@@ -1,0 +1,134 @@
+<div id="cookie-consent" class="cookie-toast hidden">
+	<div class="cookie-content">
+		<p>
+			We use cookies to improve your experience and analyze site usage.
+			<a href="/privacy-policy" class="cookie-link">Learn more</a>
+		</p>
+		<div class="cookie-actions">
+			<button id="accept-cookies" class="btn-primary">Accept</button>
+			<button id="decline-cookies" class="btn-outline">Decline</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	// Check for existing user cookie choice
+	function checkCookieConsent() {
+		const consent = localStorage.getItem('cookie-consent');
+		const toast = document.getElementById('cookie-consent');
+
+		if (!consent && toast) {
+			setTimeout(() => {
+				toast.classList.remove('hidden');
+				toast.classList.add('show');
+			}, 1500);
+		}
+	}
+
+	function handleAccept() {
+		localStorage.setItem('cookie-consent', 'accepted');
+		hideToast();
+
+		// start up Google Analytics
+		if (window.initializeTidytrekAnalytics) window.initializeTidytrekAnalytics();
+	}
+
+	function handleDecline() {
+		localStorage.setItem('cookie-consent', 'declined');
+		hideToast();
+	}
+
+	function hideToast() {
+		const toast = document.getElementById('cookie-consent');
+		if (toast) {
+			toast.classList.remove('show');
+			toast.classList.add('hide');
+			setTimeout(() => {
+				toast.classList.add('hidden');
+			}, 300);
+		}
+	}
+
+	// Initialize when DOM is loaded
+	document.addEventListener('DOMContentLoaded', () => {
+		checkCookieConsent();
+
+		const acceptBtn = document.getElementById('accept-cookies');
+		const declineBtn = document.getElementById('decline-cookies');
+
+		if (acceptBtn) acceptBtn.addEventListener('click', handleAccept);
+		if (declineBtn) declineBtn.addEventListener('click', handleDecline);
+	});
+</script>
+
+<style>
+	.cookie-toast {
+		position: fixed;
+		bottom: 1rem;
+		left: 1rem;
+		right: 1rem;
+		max-width: 500px;
+		margin: 0 auto;
+		background-color: var(--color-bg-secondary);
+		border: var(--border-primary);
+		border-radius: var(--radius-lg);
+		padding: var(--space-4);
+		box-shadow: var(--shadow-spread);
+		z-index: 9999;
+		transform: translateY(100px);
+		opacity: 0;
+		transition: all 0.3s ease-out;
+	}
+
+	.cookie-toast.show {
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	.cookie-toast.hide {
+		transform: translateY(100px);
+		opacity: 0;
+	}
+
+	.cookie-toast.hidden {
+		display: none;
+	}
+
+	.cookie-content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-3);
+	}
+
+	.cookie-content p {
+		margin: 0;
+		color: var(--color-text-primary);
+		font-size: var(--font-size-2);
+		line-height: 1.5;
+	}
+
+	.cookie-link {
+		color: var(--color-primary);
+		text-decoration: underline;
+		text-underline-offset: 2px;
+	}
+
+	.cookie-link:hover {
+		color: var(--color-primary-hover);
+	}
+
+	.cookie-actions {
+		display: flex;
+		gap: var(--space-2);
+		align-self: flex-end;
+	}
+
+	/* Responsive adjustments */
+	@media (min-width: 768px) {
+		.cookie-toast {
+			left: auto;
+			right: 1rem;
+			max-width: 400px;
+		}
+	}
+</style>

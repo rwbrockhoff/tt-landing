@@ -1,12 +1,14 @@
 ---
-import ryanProfile from '../../assets/ryan-profile-photo.png';
-import jaclynProfile from '../../assets/jaclyn-profile-photo.png';
+import ryanProfile from '../../assets/about/ryan-profile-photo.png';
+import jaclynProfile from '../../assets/about/jaclyn-profile-photo.png';
 ---
 
 <section id="about" class="py-16 grainy-texture testimonials-bg">
 	<div class="readable-width">
 		<div class="text-center mb-16 section-header">
-			<h3>We thru-hiked across the Arctic Circle together as husband & wife, and we hiked away with a few ideas</h3>
+			<h3>
+				We thru-hiked across the Arctic Circle together as husband & wife, and we <em>hiked away</em> with a few ideas
+			</h3>
 			<p class="text-lg mt-4 font-mono">Meet the 🏠 cottage company creators behind TidyTrek</p>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
@@ -18,8 +20,8 @@ import jaclynProfile from '../../assets/jaclyn-profile-photo.png';
 					<h3 class="mb-2">Ryan</h3>
 					<p class="font-mono text-sm mb-4">Cottage Code</p>
 					<p>
-						Building digital tools for the ultralight community. From pack weight calculators to gear databases, I
-						create software that helps adventurers pack smarter and hike lighter.
+						I'm a software developer building intuitive apps for my community. I'm passionate about using tech to create
+						tools to help others.
 					</p>
 				</div>
 			</div>
@@ -35,8 +37,8 @@ import jaclynProfile from '../../assets/jaclyn-profile-photo.png';
 					<h3 class="mb-2">Jaclyn</h3>
 					<p class="font-mono text-sm mb-4">Cottage Gear - <a href="https://salkadesigns.com">Sälka Designs</a></p>
 					<p>
-						Crafting premium ultralight gear for serious adventurers. Each piece is designed and sewn with precision for
-						those who demand the best in lightweight outdoor equipment.
+						I craft ultralight bags and pouches for backpackers and artists! I hope to inspire others to get outdoors
+						and create art on the trail.
 					</p>
 				</div>
 			</div>
@@ -73,6 +75,10 @@ import jaclynProfile from '../../assets/jaclyn-profile-photo.png';
 		box-shadow: var(--shadow-paper);
 	}
 
+	:global([data-theme='dark']) .founder-card {
+		background-color: var(--sierra-400);
+	}
+
 	.founder-photo-header {
 		width: 100%;
 		height: 300px;
@@ -92,7 +98,7 @@ import jaclynProfile from '../../assets/jaclyn-profile-photo.png';
 	}
 
 	.founder-content a {
-		color: var(--sierra-500);
+		color: var(--sierra-800);
 	}
 
 	.founder-content .font-mono {

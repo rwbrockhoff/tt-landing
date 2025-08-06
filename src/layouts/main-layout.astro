@@ -12,7 +12,7 @@ import '../styles/components.css';
 
 import Navbar from '~/components/navbar.astro';
 import Footer from '~/components/footer.astro';
-import favIcon from '/landing/favicon.ico';
+import CookieConsent from '~/components/legal/cookie-consent.astro';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../constants';
 const { title = 'Pack organization for backpackers and travelers.' } = Astro.props;
@@ -32,16 +32,35 @@ type Props = {
 		<meta property="og:description" content={SITE_DESCRIPTION} />
 		<meta property="og:type" content="website" />
 		<meta name="twitter:card" content="summary_large_image" />
-		<link rel="icon" type="image/x-icon" href={favIcon} />
 
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+		<link rel="manifest" href="/manifest.json" />
+		<meta name="theme-color" content="#338866" />
+
+		<script src="/src/scripts/theme.js"></script>
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-VX2NGYBNRV"></script>
 		<script>
-			// Initialize theme before page renders to prevent flash
-			(function() {
-				const savedTheme = localStorage.getItem('theme');
-				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-				const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-				document.documentElement.setAttribute('data-theme', theme);
-			})();
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			
+			// only initialize if user accepted cookies
+			const consent = localStorage.getItem('cookie-consent');
+			if (consent === 'accepted') {
+				gtag('js', new Date());
+				gtag('config', 'G-VX2NGYBNRV');
+			}
+
+
+			// function for cookie consent to call
+			window.initializeTidytrekAnalytics = function() {
+				gtag('js', new Date());
+				gtag('config', 'G-VX2NGYBNRV');
+			};
 		</script>
 
 		<title>{SITE_TITLE} - {title}</title>
@@ -52,6 +71,7 @@ type Props = {
 			<slot />
 		</main>
 		<Footer />
+		<CookieConsent />
 	</body>
 </html>
 
