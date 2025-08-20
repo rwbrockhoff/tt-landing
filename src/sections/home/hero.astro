@@ -11,6 +11,13 @@ const optimizedMountain = await getImage({
 	quality: 100,
 	width: 1920,
 });
+
+const placeholderMountain = await getImage({
+	src: mountainLandscape,
+	width: 1920,
+	quality: 10,
+	format: 'webp',
+});
 ---
 
 <link rel="preload" as="image" href={optimizedMountain.src} />
@@ -18,15 +25,26 @@ const optimizedMountain = await getImage({
 <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
 	<div class="grid-texture-layer"></div>
 	<div class="night-sky-layer"></div>
+	<img
+		src={placeholderMountain.src}
+		alt=""
+		aria-hidden="true"
+		class="mountain-landscape mountain-placeholder"
+		width="40"
+		height="auto"
+	/>
 	<Image
 		src={mountainLandscape}
 		alt=""
-		class="mountain-landscape"
+		class="mountain-landscape mountain-full"
 		loading="eager"
+		fetchpriority="high"
 		format="webp"
 		quality={100}
-		widths={[1920, 2560]}
+		widths={[640, 768, 1024, 1920]}
 		sizes="100vw"
+		decoding="async"
+		onload="this.setAttribute('data-loaded', 'true')"
 	/>
 	<div class="readable-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 		<div class="flex flex-col gap-6 order-1 lg:order-1">
@@ -46,15 +64,25 @@ const optimizedMountain = await getImage({
 			</div>
 		</div>
 		<div class="hero-preview order-2 lg:order-2 hover-lift">
-			<img
-				src={desktopPreview.src}
+			<Image
+				src={desktopPreview}
 				alt="TidyTrek desktop app preview showing pack list interface"
 				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light"
+				priority
+				format="webp"
+				quality={100}
+				widths={[640, 768, 1024]}
+				sizes="(max-width: 1024px) 100vw, 50vw"
 			/>
-			<img
-				src={desktopPreviewDark.src}
+			<Image
+				src={desktopPreviewDark}
 				alt="TidyTrek desktop app preview showing pack list interface in dark mode"
 				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark"
+				priority
+				format="webp"
+				quality={100}
+				widths={[640, 768, 1024]}
+				sizes="(max-width: 1024px) 100vw, 50vw"
 			/>
 		</div>
 	</div>
@@ -152,16 +180,22 @@ const optimizedMountain = await getImage({
 		object-position: center top;
 		z-index: 2;
 		pointer-events: none;
-		animation: fadeIn 0.5s ease-out;
 	}
 
-	@keyframes fadeIn {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
+	.mountain-placeholder {
+		z-index: 2;
+		opacity: 1;
+		filter: blur(4px);
+	}
+
+	.mountain-full {
+		z-index: 3;
+		opacity: 0;
+		transition: opacity 0.6s ease;
+	}
+
+	.mountain-full[data-loaded="true"] {
+		opacity: 1;
 	}
 
 	:global([data-theme='dark']) .mountain-landscape {

@@ -18,14 +18,14 @@
 }
 
 .btn-primary {
-	background-color: var(--color-primary);
+	background-color: var(--color-primary-surface);
 	color: white;
-	border-color: var(--color-primary);
+	border-color: var(--color-primary-surface);
 }
 
 .btn-primary:hover {
-	background-color: var(--color-primary-hover);
-	border-color: var(--color-primary-hover);
+	background-color: var(--color-primary-surface-hover);
+	border-color: var(--color-primary-surface-hover);
 }
 
 .btn-secondary {
@@ -41,8 +41,8 @@
 
 .btn-outline {
 	background-color: transparent;
-	color: var(--color-primary);
-	border-color: var(--color-primary);
+	color: var(--color-primary-text);
+	border-color: var(--color-primary-text);
 }
 
 .btn-sierra {
@@ -58,12 +58,12 @@
 
 .btn-outline {
 	background-color: transparent;
-	color: var(--color-primary);
-	border-color: var(--color-primary);
+	color: var(--color-primary-text);
+	border-color: var(--color-primary-text);
 }
 
 .btn-outline:hover {
-	background-color: var(--color-primary);
+	background-color: var(--color-primary-surface);
 	color: white;
 }
 
