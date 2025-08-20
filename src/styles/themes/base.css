@@ -1,9 +1,9 @@
 :root {
-	font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
 
 	/* Font families */
-	--font-sans: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-	--font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+	--font-sans: 'Inter Variable', 'Inter', system-ui, sans-serif;
+	--font-mono: 'JetBrains Mono', monospace;
 
 	/* Colors */
 	--sage-100: #daf1e3;

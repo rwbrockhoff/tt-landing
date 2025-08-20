@@ -15,6 +15,23 @@ const optimizedMountain = await getImage({
 const placeholderMountain = await getImage({
 	src: mountainLandscape,
 	width: 1920,
+	height: 650,
+	quality: 10,
+	format: 'webp',
+});
+
+const placeholderDesktop = await getImage({
+	src: desktopPreview,
+	width: 1024,
+	height: 640,
+	quality: 10,
+	format: 'webp',
+});
+
+const placeholderDesktopDark = await getImage({
+	src: desktopPreviewDark,
+	width: 1024,
+	height: 640,
 	quality: 10,
 	format: 'webp',
 });
@@ -25,14 +42,7 @@ const placeholderMountain = await getImage({
 <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
 	<div class="grid-texture-layer"></div>
 	<div class="night-sky-layer"></div>
-	<img
-		src={placeholderMountain.src}
-		alt=""
-		aria-hidden="true"
-		class="mountain-landscape mountain-placeholder"
-		width="40"
-		height="auto"
-	/>
+	<img src={placeholderMountain.src} alt="" aria-hidden="true" class="mountain-landscape mountain-placeholder" />
 	<Image
 		src={mountainLandscape}
 		alt=""
@@ -44,13 +54,13 @@ const placeholderMountain = await getImage({
 		widths={[640, 768, 1024, 1920]}
 		sizes="100vw"
 		decoding="async"
-		onload="this.setAttribute('data-loaded', 'true')"
+		onload="this.setAttribute('data-loaded', 'true'); document.getElementById('hero').classList.add('images-loaded');"
 	/>
 	<div class="readable-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 		<div class="flex flex-col gap-6 order-1 lg:order-1">
 			<h1>The prettiest way to pack for any adventure.</h1>
 			<p class="hero-subtitle font-mono max-w-2xl">
-				Smarter gear planning for hikers & backpackers.<br />Get tidy. Get out there.
+				Smarter gear planning for hikers & backpackers. Get tidy. Get out there.
 			</p>
 			<div class="hero-actions flex gap-4 flex-col sm:flex-row">
 				<a href="https://tidytrek.co/pk/0bkgbN" class="btn-sierra" role="button">
@@ -64,25 +74,45 @@ const placeholderMountain = await getImage({
 			</div>
 		</div>
 		<div class="hero-preview order-2 lg:order-2 hover-lift">
+			<img
+				src={placeholderDesktop.src}
+				alt=""
+				aria-hidden="true"
+				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light app-placeholder"
+			/>
 			<Image
 				src={desktopPreview}
 				alt="TidyTrek desktop app preview showing pack list interface"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light"
-				priority
+				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light app-full"
+				loading="eager"
+				fetchpriority="high"
 				format="webp"
 				quality={100}
 				widths={[640, 768, 1024]}
 				sizes="(max-width: 1024px) 100vw, 50vw"
+				width={1024}
+				height={640}
+				onload="this.setAttribute('data-loaded', 'true')"
+			/>
+			<img
+				src={placeholderDesktopDark.src}
+				alt=""
+				aria-hidden="true"
+				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark app-placeholder"
 			/>
 			<Image
 				src={desktopPreviewDark}
 				alt="TidyTrek desktop app preview showing pack list interface in dark mode"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark"
-				priority
+				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark app-full"
+				loading="eager"
+				fetchpriority="high"
 				format="webp"
 				quality={100}
 				widths={[640, 768, 1024]}
 				sizes="(max-width: 1024px) 100vw, 50vw"
+				width={1024}
+				height={640}
+				onload="this.setAttribute('data-loaded', 'true')"
 			/>
 		</div>
 	</div>
@@ -93,10 +123,16 @@ const placeholderMountain = await getImage({
 		position: relative;
 		background-color: var(--color-bg-secondary);
 		padding-bottom: 15vh;
+		height: 100vh;
 	}
 
-	/* night sky gradient */
+	/* Dark mode - transition from flat -> dynamic gradrient to avoid "flash" */
 	:global([data-theme='dark']) #hero {
+		background: linear-gradient(180deg, rgba(19, 39, 62, 1) 0%, rgba(19, 39, 62, 1) 100%);
+		transition: background 2s ease;
+	}
+
+	:global([data-theme='dark']) #hero.images-loaded {
 		background: linear-gradient(180deg, rgba(19, 39, 62, 1) 0%, rgba(19, 39, 62, 1) 50%, rgba(17, 79, 150, 1) 100%);
 	}
 
@@ -104,11 +140,13 @@ const placeholderMountain = await getImage({
 		font-size: 4rem;
 		font-weight: 800;
 		letter-spacing: -0.025em;
+		line-height: 1.1;
 	}
 
 	.hero-subtitle {
 		font-size: var(--font-size-5);
 		color: var(--color-text-primary);
+		line-height: 1.5;
 	}
 
 	.hero-preview img {
@@ -125,12 +163,18 @@ const placeholderMountain = await getImage({
 		border: var(--border-primary);
 		border-radius: 1.5rem;
 		transition: all var(--transition);
-		background-color: var(--color-bg-secondary);
+		background-color: var(--color-bg-accent);
 		width: 100%;
 		height: auto;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	/* Match hero navy background in dark mode only */
+	:global([data-theme='dark']) .desktop-preview-light,
+	:global([data-theme='dark']) .desktop-preview-dark {
+		background-color: rgba(19, 39, 62, 1);
 	}
 
 	@media (min-width: 1280px) {
@@ -180,12 +224,12 @@ const placeholderMountain = await getImage({
 		object-position: center top;
 		z-index: 2;
 		pointer-events: none;
+		background-color: transparent;
 	}
 
 	.mountain-placeholder {
 		z-index: 2;
 		opacity: 1;
-		filter: blur(4px);
 	}
 
 	.mountain-full {
@@ -194,7 +238,26 @@ const placeholderMountain = await getImage({
 		transition: opacity 0.6s ease;
 	}
 
-	.mountain-full[data-loaded="true"] {
+	.mountain-full[data-loaded='true'] {
+		opacity: 1;
+	}
+
+	.app-placeholder {
+		position: relative;
+		z-index: 2;
+		opacity: 1;
+	}
+
+	.app-full {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		opacity: 0;
+		transition: opacity 0.8s ease-out;
+	}
+
+	.app-full[data-loaded='true'] {
 		opacity: 1;
 	}
 
@@ -233,11 +296,11 @@ const placeholderMountain = await getImage({
 
 	@media (max-width: 768px) {
 		#hero h1 {
-			font-size: var(--font-size-8);
+			font-size: 3rem;
 		}
 
 		.hero-subtitle {
-			font-size: var(--font-size-4);
+			font-size: var(--font-size-5);
 		}
 	}
 </style>
