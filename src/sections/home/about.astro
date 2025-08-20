@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import ryanProfile from '../../assets/about/ryan-profile-photo.png';
 import jaclynProfile from '../../assets/about/jaclyn-profile-photo.png';
 ---
@@ -14,7 +15,15 @@ import jaclynProfile from '../../assets/about/jaclyn-profile-photo.png';
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
 			<div class="founder-card">
 				<div class="founder-photo-header">
-					<img src={ryanProfile.src} alt="Ryan, founder of TidyTrek and Cottage Code" class="founder-header-image" />
+					<Image 
+						src={ryanProfile} 
+						alt="Ryan, founder of TidyTrek and Cottage Code" 
+						class="founder-header-image"
+						loading="lazy"
+						format="webp"
+						widths={[600, 800]}
+						sizes="(max-width: 768px) 100vw, 400px"
+					/>
 				</div>
 				<div class="founder-content">
 					<h3 class="mb-2">Ryan</h3>
@@ -27,10 +36,14 @@ import jaclynProfile from '../../assets/about/jaclyn-profile-photo.png';
 			</div>
 			<div class="founder-card">
 				<div class="founder-photo-header">
-					<img
-						src={jaclynProfile.src}
+					<Image
+						src={jaclynProfile}
 						alt="Jaclyn, founder of Salka Designs cottage gear"
 						class="founder-header-image"
+						loading="lazy"
+						format="webp"
+						widths={[600, 800]}
+						sizes="(max-width: 768px) 100vw, 400px"
 					/>
 				</div>
 				<div class="founder-content">
