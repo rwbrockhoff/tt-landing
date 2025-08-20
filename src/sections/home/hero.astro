@@ -1,25 +1,38 @@
 ---
 import { Backpack, MapPin } from 'lucide-astro';
+import { Image, getImage } from 'astro:assets';
 import desktopPreview from '../../assets/hero/desktop-preview.png';
 import desktopPreviewDark from '../../assets/hero/desktop-preview-dark.png';
-import mountainLandscape from '../../assets/hero/mountain-landscape.png';
+import mountainLandscape from '../../assets/hero/mountain-landscape.webp';
+
+const optimizedMountain = await getImage({
+	src: mountainLandscape,
+	format: 'webp',
+	quality: 100,
+	width: 1920,
+});
 ---
 
-<section
-	id="hero"
-	class="min-h-screen flex items-center justify-center bg-image"
-	style={`--bg-image: url('${mountainLandscape.src}'); --bg-position: center calc(100% + 30vh);`}>
+<link rel="preload" as="image" href={optimizedMountain.src} />
+
+<section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden">
 	<div class="grid-texture-layer"></div>
 	<div class="night-sky-layer"></div>
-	<div
-		class="bg-image-layer"
-		style={`background-image: url('${mountainLandscape.src}'); background-position: center calc(100% + 30vh);`}>
-	</div>
+	<Image
+		src={mountainLandscape}
+		alt=""
+		class="mountain-landscape"
+		loading="eager"
+		format="webp"
+		quality={100}
+		widths={[1920, 2560]}
+		sizes="100vw"
+	/>
 	<div class="readable-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-		<div class="flex flex-col gap-6 order-2 lg:order-1">
+		<div class="flex flex-col gap-6 order-1 lg:order-1">
 			<h1>The prettiest way to pack for any adventure.</h1>
 			<p class="hero-subtitle font-mono max-w-2xl">
-				Smarter gear planning for backpackers & adventurers. Get tidy. Get out there.
+				Smarter gear planning for hikers & backpackers.<br />Get tidy. Get out there.
 			</p>
 			<div class="hero-actions flex gap-4 flex-col sm:flex-row">
 				<a href="https://tidytrek.co/pk/0bkgbN" class="btn-sierra" role="button">
@@ -32,7 +45,7 @@ import mountainLandscape from '../../assets/hero/mountain-landscape.png';
 				</a>
 			</div>
 		</div>
-		<div class="hero-preview order-1 lg:order-2 hover-lift">
+		<div class="hero-preview order-2 lg:order-2 hover-lift">
 			<img
 				src={desktopPreview.src}
 				alt="TidyTrek desktop app preview showing pack list interface"
@@ -76,6 +89,7 @@ import mountainLandscape from '../../assets/hero/mountain-landscape.png';
 
 	.hero-preview {
 		position: relative;
+		width: 100%;
 	}
 
 	.desktop-preview-light,
@@ -83,6 +97,19 @@ import mountainLandscape from '../../assets/hero/mountain-landscape.png';
 		border: var(--border-primary);
 		border-radius: 1.5rem;
 		transition: all var(--transition);
+		background-color: var(--color-bg-secondary);
+		width: 100%;
+		height: auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	@media (min-width: 1280px) {
+		.desktop-preview-light,
+		.desktop-preview-dark {
+			min-height: 400px;
+		}
 	}
 
 	.desktop-preview-light {
@@ -111,8 +138,55 @@ import mountainLandscape from '../../assets/hero/mountain-landscape.png';
 
 	.desktop-behind-mountain {
 		position: relative;
-		z-index: -1;
+		z-index: 10;
 		border-radius: 1.5rem;
+	}
+
+	.mountain-landscape {
+		position: absolute;
+		bottom: -10vh;
+		left: 0;
+		width: 100%;
+		height: 600px;
+		object-fit: cover;
+		object-position: center top;
+		z-index: 2;
+		pointer-events: none;
+		animation: fadeIn 0.5s ease-out;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	:global([data-theme='dark']) .mountain-landscape {
+		filter: brightness(0.3) contrast(1.2);
+	}
+
+	@media (max-width: 768px) {
+		.mountain-landscape {
+			display: none;
+		}
+
+		.desktop-preview-light,
+		.desktop-preview-dark {
+			min-height: 200px;
+		}
+	}
+
+	#hero .grid-texture-layer,
+	#hero .night-sky-layer {
+		z-index: 1;
+	}
+
+	#hero .readable-width {
+		position: relative;
+		z-index: 10;
 	}
 
 	@media (max-width: 1024px) {
