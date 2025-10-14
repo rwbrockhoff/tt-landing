@@ -1,16 +1,34 @@
 ---
 import MainLayout from '../layouts/main-layout.astro';
 import HeroSection from '../sections/home/hero.astro';
-import FeaturesSection from '../sections/home/feature.astro';
-import AboutSection from '../sections/home/about.astro';
+import IndividualFeatures from '../sections/home/individual-features.astro';
 import PricingSection from '../sections/home/pricing.astro';
 import CtaSection from '../sections/shared/cta-section.astro';
 ---
 
 <MainLayout>
 	<HeroSection />
-	<FeaturesSection />
-	<AboutSection />
+	<section class="use-case-bar">
+		<p>Built for backpacking, thru-hikes, trail running, day hikes, ski touring & more</p>
+	</section>
+	<IndividualFeatures />
 	<PricingSection />
 	<CtaSection />
 </MainLayout>
+
+<style>
+	.use-case-bar {
+		background-color: var(--sage-700);
+		padding: 1rem var(--space-4);
+		text-align: center;
+		border-bottom: 2px solid var(--sage-900);
+	}
+
+	.use-case-bar p {
+		color: #ffffff;
+		font-size: var(--font-size-3);
+		margin: 0;
+		font-weight: var(--font-weight-medium);
+		font-family: var(--font-mono);
+	}
+</style>

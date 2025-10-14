@@ -6,8 +6,8 @@
 	--color-primary-emphasis: var(--sage-200);
 	
 	--color-primary-text: var(--sage-400);
-	--color-primary-surface: var(--sage-500);
-	--color-primary-surface-hover: var(--sage-400);
+	--color-primary-surface: var(--sage-600);
+	--color-primary-surface-hover: var(--sage-500);
 
 	/* Dark theme shadows */
 	--shadow-classic: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.3),
@@ -16,11 +16,11 @@
 	--shadow-paper: 0px 8px 0px -4px rgba(0, 0, 0, 0.6);
 
 	/* Background colors */
-	--color-bg-primary: var(--sage-900);
-	--color-bg-secondary: var(--sage-700);
-	--color-bg-tertiary: var(--sage-500);
-	--color-bg-overlay: rgba(23, 61, 48, 0.9);
-	--color-bg-accent: #1a2e24;
+	--color-bg-primary: var(--gray-900);
+	--color-bg-secondary: var(--gray-800);
+	--color-bg-tertiary: var(--gray-500);
+	--color-bg-overlay: rgba(17, 24, 39, 0.9);
+	--color-bg-accent: #1d2b28;
 
 	/* Text colors */
 	--color-text-primary: #ffffff;

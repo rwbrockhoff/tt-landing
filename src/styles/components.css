@@ -78,6 +78,15 @@
 	color: white;
 }
 
+/* Override global link opacity for buttons */
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-sierra:hover,
+.btn-outline:hover,
+.btn-outline-sierra:hover {
+	opacity: 1;
+}
+
 /* Focus styles */
 button:focus-visible,
 a:focus-visible,
