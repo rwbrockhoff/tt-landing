@@ -48,6 +48,11 @@ const { packImage, packName, packDescription, username, avatarImage } = Astro.pr
 		flex-direction: column;
 	}
 
+	:global([data-theme='dark']) .saved-pack-card {
+		background-color: var(--color-bg-secondary);
+		border-color: var(--color-border-primary);
+	}
+
 	.card-inner {
 		overflow: hidden;
 		border-radius: inherit;
@@ -107,6 +112,10 @@ const { packImage, packName, packDescription, username, avatarImage } = Astro.pr
 		flex: 1;
 	}
 
+	:global([data-theme='dark']) .pack-name {
+		color: var(--color-text-primary);
+	}
+
 	.bookmark-icon {
 		flex-shrink: 0;
 	}
@@ -120,6 +129,10 @@ const { packImage, packName, packDescription, username, avatarImage } = Astro.pr
 		-webkit-line-clamp: 2;
 		-webkit-box-orient: vertical;
 		overflow: hidden;
+	}
+
+	:global([data-theme='dark']) .pack-description {
+		color: var(--color-text-tertiary);
 	}
 
 	.pack-author {
@@ -138,10 +151,18 @@ const { packImage, packName, packDescription, username, avatarImage } = Astro.pr
 		display: block;
 	}
 
+	:global([data-theme='dark']) .avatar {
+		background-color: var(--color-bg-tertiary);
+	}
+
 	.username {
 		font-size: var(--font-size-3);
 		font-weight: var(--font-weight-semibold);
 		color: var(--gray-900);
 		margin: 0;
+	}
+
+	:global([data-theme='dark']) .username {
+		color: var(--color-text-secondary);
 	}
 </style>

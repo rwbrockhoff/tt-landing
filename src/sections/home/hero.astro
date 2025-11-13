@@ -4,6 +4,7 @@ import { Image, getImage } from 'astro:assets';
 import packPreviewLight from '../../assets/hero/pack-preview-light.webp';
 import packPreviewDark from '../../assets/hero/pack-preview-dark.webp';
 import mountainLandscape from '../../assets/hero/mountain-landscape.webp';
+import tent from '../../assets/hero/tent.webp';
 
 const optimizedMountain = await getImage({
 	src: mountainLandscape,
@@ -53,6 +54,16 @@ const placeholderPackDark = await getImage({
 		sizes="100vw"
 		decoding="async"
 		onload="this.setAttribute('data-loaded', 'true'); document.getElementById('hero').classList.add('images-loaded');"
+	/>
+	<Image
+		src={tent}
+		alt=""
+		class="tent-image"
+		loading="eager"
+		format="webp"
+		quality={100}
+		widths={[400, 600, 800]}
+		sizes="(max-width: 768px) 0px, 600px"
 	/>
 	<div class="readable-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 		<div class="flex flex-col gap-6 order-1 lg:order-1">
@@ -263,8 +274,28 @@ const placeholderPackDark = await getImage({
 		filter: brightness(0.3) contrast(1.2);
 	}
 
+	.tent-image {
+		position: absolute;
+		right: 15%;
+		bottom: 10vh;
+		width: 75px;
+		height: auto;
+		z-index: 4;
+		pointer-events: none;
+		display: none;
+	}
+
+	:global([data-theme='dark']) .tent-image {
+		display: block;
+		filter: brightness(0.75);
+	}
+
 	@media (max-width: 768px) {
 		.mountain-landscape {
+			display: none;
+		}
+
+		.tent-image {
 			display: none;
 		}
 	}
