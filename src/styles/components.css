@@ -78,6 +78,21 @@
 	color: white;
 }
 
+/* Button sizes */
+.btn-md {
+	padding: var(--space-2) var(--space-6);
+	font-size: var(--font-size-5);
+	align-self: flex-start;
+	width: fit-content;
+}
+
+.btn-lg {
+	padding: var(--space-3) var(--space-6);
+	font-size: var(--font-size-6);
+	align-self: flex-start;
+	width: fit-content;
+}
+
 /* Override global link opacity for buttons */
 .btn-primary:hover,
 .btn-secondary:hover,

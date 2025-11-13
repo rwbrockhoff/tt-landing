@@ -113,3 +113,29 @@
 .bg-image-center::after {
 	background-position: center center;
 }
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px) var(--card-position-transform);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) var(--card-position-transform);
+	}
+}
+
+.animate-on-scroll {
+	opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+	animation: slideUp 0.6s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.animate-on-scroll {
+		opacity: 1;
+		animation: none;
+	}
+}
