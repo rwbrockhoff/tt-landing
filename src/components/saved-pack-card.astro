@@ -1,0 +1,147 @@
+---
+import { Bookmark } from 'lucide-astro';
+
+interface Props {
+	packImage: string;
+	packName: string;
+	packDescription: string;
+	username: string;
+	avatarImage?: string;
+}
+
+const { packImage, packName, packDescription, username, avatarImage } = Astro.props;
+---
+
+<div class="saved-pack-card">
+	<div class="card-inner">
+		<div class="pack-image-container">
+			<img src={packImage} alt={packName} class="pack-image" />
+		</div>
+		<div class="pack-details">
+			<div class="pack-content">
+				<div class="pack-name-container">
+					<h3 class="pack-name">{packName}</h3>
+					<Bookmark
+						fill="var(--color-text-tertiary)"
+						stroke="var(--color-text-tertiary)"
+						size={16}
+						class="bookmark-icon"
+					/>
+				</div>
+				<p class="pack-description">{packDescription}</p>
+			</div>
+			<div class="pack-author">
+				{avatarImage ? <img src={avatarImage} alt={username} class="avatar" /> : <div class="avatar" />}
+				<p class="username">{username}</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.saved-pack-card {
+		background-color: var(--color-constant-white);
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--gray-300);
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.card-inner {
+		overflow: hidden;
+		border-radius: inherit;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	.pack-image-container {
+		width: 100%;
+		height: 0;
+		padding-bottom: 56.25%;
+		background-color: var(--gray-100);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.pack-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
+	}
+
+	.pack-details {
+		padding: var(--space-4);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+		flex: 1;
+	}
+
+	.pack-content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+		flex: 1;
+	}
+
+	.pack-name-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-2);
+	}
+
+	.pack-name {
+		font-size: var(--font-size-5);
+		font-weight: var(--font-weight-semibold);
+		color: var(--gray-900);
+		margin: 0;
+		line-height: var(--line-height-tight);
+		flex: 1;
+	}
+
+	.bookmark-icon {
+		flex-shrink: 0;
+	}
+
+	.pack-description {
+		font-size: var(--font-size-3);
+		color: var(--gray-600);
+		line-height: var(--line-height-normal);
+		margin: 0;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.pack-author {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.avatar {
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		background-color: var(--gray-300);
+		flex-shrink: 0;
+		object-fit: cover;
+		display: block;
+	}
+
+	.username {
+		font-size: var(--font-size-3);
+		font-weight: var(--font-weight-semibold);
+		color: var(--gray-900);
+		margin: 0;
+	}
+</style>

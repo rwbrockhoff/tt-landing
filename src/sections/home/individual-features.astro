@@ -1,51 +1,44 @@
 ---
 import IndividualFeature from '../../components/individual-feature.astro';
+import SavedPacksFeature from '../../components/saved-packs-feature.astro';
 import analyticsPreview from '../../assets/features/analytics-dashboard-preview.webp';
-import savedPacksPreview from '../../assets/features/saved-packs-preview.webp';
 import shakedownPreview from '../../assets/features/shakedown-preview.webp';
 import gearClosetPreview from '../../assets/features/gear-closet-preview.webp';
 ---
 
 <section id="feature-screenshots">
-	<IndividualFeature
+	<SavedPacksFeature
 		title="Save & Discover Packs"
 		subtitle="Save your favorite gear setups from other hikers & backpackers and discover new gear."
-		bullets={[
-			"Save packs for inspiration",
-			"Discover gear for your next trip",
-			"Compare gear choices across different trips"
-		]}
-		imageSrc={savedPacksPreview.src}
-		imageAlt="TidyTrek saved packs page showing bookmarked gear setups"
 		photoLeft={false}
 		background="primary"
 	/>
 
 	<IndividualFeature
-		title="Create Shakedowns"
-		subtitle="Share your gear and get feedback all in one place - no more jumping between apps."
+		title="Food Bags & Meal Planning"
+		subtitle="Organize meals by day with calorie tracking and weight calculations."
 		bullets={[
-			"Keep pack history and feedback organized together",
-			"Ask specific questions about gear and conditions",
-			"Improve your setup before hitting the trail"
+			'Track calories and nutrition for each day',
+			'Calculate total food weight for your pack',
+			'Monitor macros and performance nutrition',
 		]}
-		imageSrc={shakedownPreview.src}
-		imageAlt="TidyTrek shakedown feature showing community feedback on a pack"
+		imageSrc={gearClosetPreview.src}
+		imageAlt="TidyTrek food bags feature showing meal planning by day"
 		photoLeft={true}
 		background="secondary"
 		borders={true}
 	/>
 
 	<IndividualFeature
-		title="Organize Your Gear Closet"
-		subtitle="Easily manage your extra items, gear wishlist, or items that don't have a pack yet."
+		title="Create Shakedowns"
+		subtitle="Share your gear and get feedback all in one place - no more jumping between apps."
 		bullets={[
-			"Organize gear in bins and categories",
-			"Easily move items between packs and your gear closet",
-			"Build new packs from your collection"
+			'Keep pack history and feedback organized together',
+			'Ask specific questions about gear and conditions',
+			'Improve your setup before hitting the trail',
 		]}
-		imageSrc={gearClosetPreview.src}
-		imageAlt="TidyTrek gear closet showing organized gear collection with search"
+		imageSrc={shakedownPreview.src}
+		imageAlt="TidyTrek shakedown feature showing community feedback on a pack"
 		photoLeft={false}
 		background="primary"
 	/>
@@ -54,9 +47,9 @@ import gearClosetPreview from '../../assets/features/gear-closet-preview.webp';
 		title="Track Your Analytics"
 		subtitle="Get detailed insights on your community engagement and pack performance."
 		bullets={[
-			"See which packs and gear get the most engagement",
-			"Track performance for campaigns and sponsors",
-			"See what resonates with your audience"
+			'See which packs and gear get the most engagement',
+			'Track performance for campaigns and sponsors',
+			'See what resonates with your audience',
 		]}
 		imageSrc={analyticsPreview.src}
 		imageAlt="TidyTrek analytics dashboard showing pack performance metrics"
