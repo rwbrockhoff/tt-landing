@@ -5,14 +5,12 @@ interface Props {
 	title: string;
 	subtitle: string;
 	photoLeft?: boolean;
-	background?: 'primary' | 'secondary';
-	borders?: boolean;
 }
 
-const { title, subtitle, photoLeft = false, background = 'primary', borders = false } = Astro.props;
+const { title, subtitle, photoLeft = false } = Astro.props;
 ---
 
-<section class={`feature-showcase py-16 bg-${background} ${borders ? 'with-borders' : ''}`}>
+<section class=`feature-showcase`>
 	<div class="readable-width">
 		<div class={`feature-grid ${photoLeft ? 'photo-left' : 'photo-right'}`}>
 			<div class="feature-content">
@@ -28,6 +26,10 @@ const { title, subtitle, photoLeft = false, background = 'primary', borders = fa
 </section>
 
 <style>
+	.feature-showcase {
+		padding-block: var(--space-8);
+	}
+
 	.feature-showcase.bg-primary {
 		background-color: var(--color-bg-primary);
 	}
@@ -105,10 +107,6 @@ const { title, subtitle, photoLeft = false, background = 'primary', borders = fa
 	}
 
 	@media (max-width: 1023px) {
-		.feature-showcase {
-			padding-block: var(--space-12);
-		}
-
 		.feature-grid {
 			text-align: left;
 			padding: 0 var(--space-4);
