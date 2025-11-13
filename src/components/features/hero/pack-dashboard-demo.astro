@@ -5,10 +5,10 @@ import PackWeightChart from './pack-weight-chart.astro';
 import PackCategoryTable from './pack-category-table.astro';
 
 const packData = {
-	packName: 'Summer Sierra Backpacking',
-	packDescription: 'A week-long thru-hike through the High Sierras with stunning alpine scenery.',
+	packName: 'Colorado Trail',
+	packDescription: 'My 12lb baseweight setup for 2026 thru-hike',
 	isPublic: true,
-	tags: ['Backpacking', 'Summer', 'California'],
+	tags: ['Thru-Hike', 'Colorado', 'Summer'],
 	totalWeight: '12.5 lbs',
 };
 
@@ -26,17 +26,16 @@ const chartCategories = categories.map((cat) => ({
 }));
 
 const bigThreeItems = [
-	{ name: 'Zpacks Duplex', weightOz: 19, quantity: 1, price: 699 },
-	{ name: 'Western Mountaineering UltraLite', weightOz: 29, quantity: 1, price: 575 },
-	{ name: 'Hyperlite 3400 Southwest', weightOz: 28, quantity: 1, price: 385 },
-	{ name: 'Thinlight Pad', weightOz: 2, quantity: 1, price: 15 },
-	{ name: 'Nemo Tensor Insulated', weightOz: 15, quantity: 1, price: 220 },
+	{ name: 'Durston X-Mid 2', weightOz: 34, quantity: 1, price: 319 },
+	{ name: 'EE Revelation Quilt 20°', weightOz: 20, quantity: 1, price: 370 },
+	{ name: 'Hyperlite 2400 Southwest', weightOz: 28, quantity: 1, price: 379 },
+	{ name: 'Nemo Tensor Insulated (Wide)', weightOz: 19, quantity: 1, price: 220 },
 ];
 ---
 
 <script src="../../../scripts/scroll-animations.js"></script>
 
-<div class="pack-dashboard-demo" data-theme="dark" data-theme-palette="wildflower">
+<div class="pack-dashboard-demo" data-theme="light" data-theme-palette="tidytrek">
 	<div class="demo-container">
 		<div class="demo-top-grid">
 			<PackMetadataPanel
@@ -51,21 +50,17 @@ const bigThreeItems = [
 			<PackWeightChart totalWeight={packData.totalWeight} categories={chartCategories} />
 		</div>
 
-		<PackCategoryTable
-			categoryName="Big Three"
-			categoryColor="var(--palette-01)"
-			items={bigThreeItems}
-		/>
+		<PackCategoryTable categoryName="Big Three" categoryColor="var(--palette-01)" items={bigThreeItems} />
 	</div>
 </div>
 
 <script>
 	const combos = [
-		{ theme: 'dark', palette: 'wildflower' },
-		{ theme: 'slate', palette: 'arctic' },
 		{ theme: 'light', palette: 'tidytrek' },
 		{ theme: 'canvas', palette: 'canyon' },
 		{ theme: 'canvas', palette: 'atlas' },
+		{ theme: 'slate', palette: 'arctic' },
+		{ theme: 'dark', palette: 'wildflower' },
 	];
 
 	let currentIndex = 0;
@@ -105,6 +100,7 @@ const bigThreeItems = [
 		margin: 0 auto;
 		padding: var(--space-6);
 		background-color: var(--color-bg-primary);
+		border: 1px solid rgba(0, 0, 0, 0.15);
 		border-radius: var(--radius-lg);
 		box-shadow: var(--shadow-spread);
 		transition:
