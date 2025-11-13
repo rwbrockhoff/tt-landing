@@ -1,5 +1,5 @@
 ---
-import FoodBagChartDemo from './food-bags/food-bag-chart-demo.astro';
+import ShakedownsDemo from './shakedowns/shakedowns-demo.astro';
 
 interface Props {
 	title: string;
@@ -20,8 +20,8 @@ const { title, subtitle, photoLeft = false, background = 'primary', borders = fa
 				<p class="feature-subtitle">{subtitle}</p>
 				<a href="https://tidytrek.co/register" class="btn-primary btn-md">Sign Up</a>
 			</div>
-			<div class="feature-chart-wrapper">
-				<FoodBagChartDemo />
+			<div class="feature-demo-wrapper">
+				<ShakedownsDemo />
 			</div>
 		</div>
 	</div>
@@ -58,7 +58,7 @@ const { title, subtitle, photoLeft = false, background = 'primary', borders = fa
 			grid-template-areas: 'image content';
 		}
 
-		.feature-grid.photo-left .feature-chart-wrapper {
+		.feature-grid.photo-left .feature-demo-wrapper {
 			grid-area: image;
 		}
 
@@ -74,7 +74,7 @@ const { title, subtitle, photoLeft = false, background = 'primary', borders = fa
 			grid-area: content;
 		}
 
-		.feature-grid.photo-right .feature-chart-wrapper {
+		.feature-grid.photo-right .feature-demo-wrapper {
 			grid-area: image;
 		}
 	}
@@ -99,8 +99,11 @@ const { title, subtitle, photoLeft = false, background = 'primary', borders = fa
 		font-family: var(--font-mono);
 	}
 
-	.feature-chart-wrapper {
+	.feature-demo-wrapper {
 		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		width: 100%;
 	}
 
@@ -113,6 +116,10 @@ const { title, subtitle, photoLeft = false, background = 'primary', borders = fa
 			text-align: left;
 			padding: 0 var(--space-4);
 			gap: var(--space-12);
+		}
+
+		.feature-bullets {
+			text-align: left;
 		}
 	}
 </style>

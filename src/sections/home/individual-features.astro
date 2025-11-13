@@ -2,8 +2,8 @@
 import IndividualFeature from '../../components/individual-feature.astro';
 import SavedPacksFeature from '../../components/saved-packs/saved-packs-feature.astro';
 import FoodBagFeature from '../../components/food-bag-feature.astro';
+import ShakedownsFeature from '../../components/shakedowns-feature.astro';
 import analyticsPreview from '../../assets/features/analytics-dashboard-preview.webp';
-import shakedownPreview from '../../assets/features/shakedown-preview.webp';
 import gearClosetPreview from '../../assets/features/gear-closet-preview.webp';
 ---
 
@@ -24,16 +24,9 @@ import gearClosetPreview from '../../assets/features/gear-closet-preview.webp';
 		background="primary"
 	/>
 
-	<IndividualFeature
+	<ShakedownsFeature
 		title="Create Shakedowns"
 		subtitle="Share your gear and get feedback all in one place - no more jumping between apps."
-		bullets={[
-			'Keep pack history and feedback organized together',
-			'Ask specific questions about gear and conditions',
-			'Improve your setup before hitting the trail',
-		]}
-		imageSrc={shakedownPreview.src}
-		imageAlt="TidyTrek shakedown feature showing community feedback on a pack"
 		photoLeft={false}
 		background="primary"
 	/>
