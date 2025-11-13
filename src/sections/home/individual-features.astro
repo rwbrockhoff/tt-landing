@@ -3,7 +3,7 @@ import IndividualFeature from '../../components/individual-feature.astro';
 import SavedPacksFeature from '../../components/saved-packs/saved-packs-feature.astro';
 import FoodBagFeature from '../../components/food-bag-feature.astro';
 import ShakedownsFeature from '../../components/shakedowns-feature.astro';
-import analyticsPreview from '../../assets/features/analytics-dashboard-preview.webp';
+import AnalyticsFeature from '../../components/analytics-feature.astro';
 import gearClosetPreview from '../../assets/features/gear-closet-preview.webp';
 ---
 
@@ -31,17 +31,10 @@ import gearClosetPreview from '../../assets/features/gear-closet-preview.webp';
 		background="primary"
 	/>
 
-	<IndividualFeature
+	<AnalyticsFeature
 		title="Track Your Analytics"
 		subtitle="Get detailed insights on your community engagement and pack performance."
-		bullets={[
-			'See which packs and gear get the most engagement',
-			'Track performance for campaigns and sponsors',
-			'See what resonates with your audience',
-		]}
-		imageSrc={analyticsPreview.src}
-		imageAlt="TidyTrek analytics dashboard showing pack performance metrics"
 		photoLeft={true}
-		background="secondary"
+		background="primary"
 	/>
 </section>
