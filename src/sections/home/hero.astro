@@ -1,10 +1,9 @@
 ---
 import { Backpack, MapPin } from 'lucide-astro';
 import { Image, getImage } from 'astro:assets';
-import packPreviewLight from '../../assets/hero/pack-preview-light.webp';
-import packPreviewDark from '../../assets/hero/pack-preview-dark.webp';
 import mountainLandscape from '../../assets/hero/mountain-landscape.webp';
 import tent from '../../assets/hero/tent.webp';
+import PackDashboardDemo from '../../components/features/hero/pack-dashboard-demo.astro';
 
 const optimizedMountain = await getImage({
 	src: mountainLandscape,
@@ -17,20 +16,6 @@ const placeholderMountain = await getImage({
 	src: mountainLandscape,
 	width: 1920,
 	height: 650,
-	quality: 10,
-	format: 'webp',
-});
-
-const placeholderPackLight = await getImage({
-	src: packPreviewLight,
-	width: 1024,
-	quality: 10,
-	format: 'webp',
-});
-
-const placeholderPackDark = await getImage({
-	src: packPreviewDark,
-	width: 1024,
 	quality: 10,
 	format: 'webp',
 });
@@ -79,44 +64,7 @@ const placeholderPackDark = await getImage({
 			</div>
 		</div>
 		<div class="hero-preview order-2 lg:order-2">
-			<img
-				src={placeholderPackLight.src}
-				alt=""
-				aria-hidden="true"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light app-placeholder"
-			/>
-			<Image
-				src={packPreviewLight}
-				alt="TidyTrek pack preview showing gear organization interface"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light app-full"
-				loading="eager"
-				fetchpriority="high"
-				format="webp"
-				quality={100}
-				widths={[640, 768, 1024]}
-				sizes="(max-width: 1024px) 100vw, 50vw"
-				width={1024}
-				onload="this.setAttribute('data-loaded', 'true')"
-			/>
-			<img
-				src={placeholderPackDark.src}
-				alt=""
-				aria-hidden="true"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark app-placeholder"
-			/>
-			<Image
-				src={packPreviewDark}
-				alt="TidyTrek pack preview showing gear organization interface in dark mode"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark app-full"
-				loading="eager"
-				fetchpriority="high"
-				format="webp"
-				quality={100}
-				widths={[640, 768, 1024]}
-				sizes="(max-width: 1024px) 100vw, 50vw"
-				width={1024}
-				onload="this.setAttribute('data-loaded', 'true')"
-			/>
+			<PackDashboardDemo />
 		</div>
 	</div>
 </section>
@@ -152,62 +100,10 @@ const placeholderPackDark = await getImage({
 		line-height: 1.5;
 	}
 
-	.hero-preview img {
-		box-shadow: var(--shadow-paper);
-	}
-
 	.hero-preview {
 		position: relative;
 		width: 100%;
-	}
-
-	.desktop-preview-light,
-	.desktop-preview-dark {
-		border: var(--border-primary);
-		border-radius: 1.5rem;
-		transition: all var(--transition);
-		background-color: var(--color-bg-accent);
-		width: 100%;
-		height: auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* Match hero navy background in dark mode only */
-	:global([data-theme='dark']) .desktop-preview-light,
-	:global([data-theme='dark']) .desktop-preview-dark {
-		background-color: rgba(19, 39, 62, 1);
-	}
-
-	.desktop-preview-light {
-		display: block;
-	}
-
-	.desktop-preview-dark {
-		display: none;
-	}
-
-	:global([data-theme='light']) .desktop-preview-light {
-		display: block;
-	}
-
-	:global([data-theme='light']) .desktop-preview-dark {
-		display: none;
-	}
-
-	:global([data-theme='dark']) .desktop-preview-light {
-		display: none;
-	}
-
-	:global([data-theme='dark']) .desktop-preview-dark {
-		display: block;
-	}
-
-	.desktop-behind-mountain {
-		position: relative;
 		z-index: 10;
-		border-radius: 1.5rem;
 	}
 
 	.mountain-landscape {
@@ -248,25 +144,6 @@ const placeholderPackDark = await getImage({
 	}
 
 	.mountain-full[data-loaded='true'] {
-		opacity: 1;
-	}
-
-	.app-placeholder {
-		position: relative;
-		z-index: 2;
-		opacity: 1;
-	}
-
-	.app-full {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 3;
-		opacity: 0;
-		transition: opacity 0.8s ease-out;
-	}
-
-	.app-full[data-loaded='true'] {
 		opacity: 1;
 	}
 

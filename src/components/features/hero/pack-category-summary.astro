@@ -1,0 +1,67 @@
+---
+interface Category {
+	name: string;
+	weight: string;
+	color: string;
+}
+
+interface Props {
+	categories: Category[];
+}
+
+const { categories } = Astro.props;
+---
+
+<div class="category-summary animate-on-scroll" data-animation-delay="50">
+	<div class="category-list">
+		{
+			categories.map((category) => (
+				<div class="category-item">
+					<span class="category-dot" style={`background-color: ${category.color};`} />
+					<span class="category-name">{category.name}</span>
+					<span class="category-weight">{category.weight}</span>
+				</div>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.category-summary {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.category-list {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.category-item {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.category-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		flex-shrink: 0;
+		transition: background-color 0.5s ease;
+	}
+
+	.category-name {
+		font-size: var(--font-size-2);
+		color: var(--color-text-primary);
+		flex: 1;
+	}
+
+	.category-weight {
+		font-size: var(--font-size-2);
+		color: var(--color-text-secondary);
+		font-weight: var(--font-weight-medium);
+	}
+</style>

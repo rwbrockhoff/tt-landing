@@ -1,0 +1,153 @@
+---
+import PackMetadataPanel from './pack-metadata-panel.astro';
+import PackCategorySummary from './pack-category-summary.astro';
+import PackWeightChart from './pack-weight-chart.astro';
+import PackCategoryTable from './pack-category-table.astro';
+
+const packData = {
+	packName: 'Summer Sierra Backpacking',
+	packDescription: 'A week-long thru-hike through the High Sierras with stunning alpine scenery.',
+	isPublic: true,
+	tags: ['Backpacking', 'Summer', 'California'],
+	totalWeight: '12.5 lbs',
+};
+
+const categories = [
+	{ name: 'Big Three', weight: '5.7 lbs', percentage: 45, color: 'var(--palette-01)' },
+	{ name: 'Clothing', weight: '2.1 lbs', percentage: 17, color: 'var(--palette-02)' },
+	{ name: 'Cook System', weight: '1.8 lbs', percentage: 14, color: 'var(--palette-03)' },
+	{ name: 'Electronics', weight: '1.6 lbs', percentage: 13, color: 'var(--palette-04)' },
+	{ name: 'First Aid', weight: '1.3 lbs', percentage: 11, color: 'var(--palette-05)' },
+];
+
+const chartCategories = categories.map((cat) => ({
+	...cat,
+	weight: parseFloat(cat.weight),
+}));
+
+const bigThreeItems = [
+	{ name: 'Zpacks Duplex', weightOz: 19, quantity: 1, price: 699 },
+	{ name: 'Western Mountaineering UltraLite', weightOz: 29, quantity: 1, price: 575 },
+	{ name: 'Hyperlite 3400 Southwest', weightOz: 28, quantity: 1, price: 385 },
+	{ name: 'Thinlight Pad', weightOz: 2, quantity: 1, price: 15 },
+	{ name: 'Nemo Tensor Insulated', weightOz: 15, quantity: 1, price: 220 },
+];
+---
+
+<script src="../../../scripts/scroll-animations.js"></script>
+
+<div class="pack-dashboard-demo" data-theme="dark" data-theme-palette="wildflower">
+	<div class="demo-container">
+		<div class="demo-top-grid">
+			<PackMetadataPanel
+				packName={packData.packName}
+				packDescription={packData.packDescription}
+				isPublic={packData.isPublic}
+				tags={packData.tags}
+			/>
+			<div class="category-summary-wrapper">
+				<PackCategorySummary categories={categories} />
+			</div>
+			<PackWeightChart totalWeight={packData.totalWeight} categories={chartCategories} />
+		</div>
+
+		<PackCategoryTable
+			categoryName="Big Three"
+			categoryColor="var(--palette-01)"
+			items={bigThreeItems}
+		/>
+	</div>
+</div>
+
+<script>
+	const combos = [
+		{ theme: 'dark', palette: 'wildflower' },
+		{ theme: 'slate', palette: 'arctic' },
+		{ theme: 'light', palette: 'tidytrek' },
+		{ theme: 'canvas', palette: 'canyon' },
+		{ theme: 'canvas', palette: 'atlas' },
+	];
+
+	let currentIndex = 0;
+	let interval: ReturnType<typeof setInterval>;
+
+	function updateDemo(combo: (typeof combos)[0]) {
+		const demo = document.querySelector('.pack-dashboard-demo');
+
+		if (demo) {
+			demo.setAttribute('data-theme', combo.theme);
+			demo.setAttribute('data-theme-palette', combo.palette);
+		}
+	}
+
+	function startRotation() {
+		interval = setInterval(() => {
+			currentIndex = (currentIndex + 1) % combos.length;
+			updateDemo(combos[currentIndex]);
+		}, 3000);
+	}
+
+	const demo = document.querySelector('.pack-dashboard-demo');
+	if (demo) {
+		demo.addEventListener('mouseenter', () => clearInterval(interval));
+		demo.addEventListener('mouseleave', () => startRotation());
+
+		startRotation();
+	}
+</script>
+
+<style>
+	@import './styles/palettes.css';
+
+	.pack-dashboard-demo {
+		width: 100%;
+		max-width: 900px;
+		margin: 0 auto;
+		padding: var(--space-6);
+		background-color: var(--color-bg-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-spread);
+		transition:
+			background-color 0.5s ease,
+			color 0.5s ease,
+			border-color 0.5s ease;
+		transform: scale(0.9);
+	}
+
+	.demo-container {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-6);
+	}
+
+	.demo-top-grid {
+		display: grid;
+		grid-template-columns: 1.15fr 0.95fr 1fr;
+		gap: var(--space-6);
+		align-items: start;
+	}
+
+	@media (max-width: 1024px) {
+		.demo-top-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.pack-dashboard-demo {
+			max-width: 100%;
+			padding: var(--space-3);
+			transform: scale(1);
+		}
+
+		.demo-top-grid {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+			gap: var(--space-4);
+		}
+
+		.category-summary-wrapper {
+			display: none;
+		}
+	}
+</style>
