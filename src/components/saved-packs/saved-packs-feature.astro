@@ -1,14 +1,14 @@
 ---
 import SavedPackCard from './saved-pack-card.astro';
-import bookmarkCard1 from '../assets/features/bookmarks/bookmark-card-1.webp';
-import bookmarkCard2 from '../assets/features/bookmarks/bookmark-card-2.webp';
-import bookmarkCard3 from '../assets/features/bookmarks/bookmark-card-3.webp';
-import bookmarkCard4 from '../assets/features/bookmarks/bookmark-card-4.webp';
+import bookmarkCard1 from '../../assets/features/bookmarks/bookmark-card-1.webp';
+import bookmarkCard2 from '../../assets/features/bookmarks/bookmark-card-2.webp';
+import bookmarkCard3 from '../../assets/features/bookmarks/bookmark-card-3.webp';
+import bookmarkCard4 from '../../assets/features/bookmarks/bookmark-card-4.webp';
 
-import avatar1 from '../assets/avatars/avatar-1.webp';
-import avatar2 from '../assets/avatars/avatar-2.webp';
-import avatar3 from '../assets/avatars/avatar-3.webp';
-import avatar4 from '../assets/avatars/avatar-4.webp';
+import avatar1 from '../../assets/avatars/avatar-1.webp';
+import avatar2 from '../../assets/avatars/avatar-2.webp';
+import avatar3 from '../../assets/avatars/avatar-3.webp';
+import avatar4 from '../../assets/avatars/avatar-4.webp';
 
 interface PackCard {
 	packImage: string;
@@ -60,9 +60,9 @@ const cards: PackCard[] = [
 ];
 ---
 
-<script src="../scripts/scroll-animations.js"></script>
+<script src="../../scripts/scroll-animations.js"></script>
 
-<section class={`feature-showcase py-12 pb-16 bg-${background} ${borders ? 'with-borders' : ''}`}>
+<section class={`feature-showcase py-12 bg-${background} ${borders ? 'with-borders' : ''}`}>
 	<div class="readable-width">
 		<div class={`feature-grid ${photoLeft ? 'photo-left' : 'photo-right'}`}>
 			<div class="feature-content">

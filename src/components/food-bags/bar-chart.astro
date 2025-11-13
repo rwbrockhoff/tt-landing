@@ -1,0 +1,55 @@
+---
+interface Props {
+	percentage: number;
+	color: string;
+	delay?: number;
+}
+
+const { percentage, color, delay = 0 } = Astro.props;
+---
+
+<div class="bar-chart-item animate-on-scroll" data-animation-delay={delay}>
+	<div class="bar-container">
+		<div class="bar-fill" style={`background-color: ${color}; --percentage: ${percentage}`}></div>
+	</div>
+</div>
+
+<style>
+	.bar-container {
+		position: relative;
+		width: 40px;
+		height: 250px;
+		background-color: transparent;
+		border-radius: var(--radius);
+		overflow: hidden;
+		display: flex;
+		align-items: flex-end;
+	}
+
+	.bar-fill {
+		width: 100%;
+		height: 0;
+		border-radius: var(--radius);
+		animation: fillBar 1s ease-out forwards;
+		animation-play-state: paused;
+	}
+
+	.bar-chart-item.is-visible .bar-fill {
+		animation-play-state: running;
+	}
+
+	@keyframes fillBar {
+		from {
+			height: 0;
+		}
+		to {
+			height: calc(var(--percentage) * 1%);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.bar-container {
+			width: 50px;
+		}
+	}
+</style>

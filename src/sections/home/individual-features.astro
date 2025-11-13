@@ -1,6 +1,7 @@
 ---
 import IndividualFeature from '../../components/individual-feature.astro';
-import SavedPacksFeature from '../../components/saved-packs-feature.astro';
+import SavedPacksFeature from '../../components/saved-packs/saved-packs-feature.astro';
+import FoodBagFeature from '../../components/food-bag-feature.astro';
 import analyticsPreview from '../../assets/features/analytics-dashboard-preview.webp';
 import shakedownPreview from '../../assets/features/shakedown-preview.webp';
 import gearClosetPreview from '../../assets/features/gear-closet-preview.webp';
@@ -14,19 +15,13 @@ import gearClosetPreview from '../../assets/features/gear-closet-preview.webp';
 		background="primary"
 	/>
 
-	<IndividualFeature
+	<FoodBagFeature
 		title="Food Bags & Meal Planning"
 		subtitle="Organize meals by day with calorie tracking and weight calculations."
-		bullets={[
-			'Track calories and nutrition for each day',
-			'Calculate total food weight for your pack',
-			'Monitor macros and performance nutrition',
-		]}
 		imageSrc={gearClosetPreview.src}
 		imageAlt="TidyTrek food bags feature showing meal planning by day"
 		photoLeft={true}
-		background="secondary"
-		borders={true}
+		background="primary"
 	/>
 
 	<IndividualFeature
