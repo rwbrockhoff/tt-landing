@@ -1,0 +1,206 @@
+---
+interface PackItem {
+	name: string;
+	weightOz: number;
+	quantity: number;
+	price: number;
+}
+
+interface Props {
+	categoryName: string;
+	categoryColor: string;
+	items: PackItem[];
+}
+
+const { categoryName, categoryColor, items } = Astro.props;
+---
+
+<div class="category-table-wrapper animate-on-scroll" data-animation-delay="200">
+	<div class="category-header">
+		<div class="category-title">
+			<span class="category-dot" style={`background-color: ${categoryColor};`}></span>
+			<h3>{categoryName}</h3>
+		</div>
+		<div class="column-headers">
+			<span class="col-label col-weight">Weight</span>
+			<span class="col-label col-qty">Qty</span>
+			<span class="col-label col-price">Price</span>
+		</div>
+	</div>
+
+	<div class="table-container">
+		<table class="pack-table">
+			<tbody>
+				{
+					items.map((item, index) => (
+						<tr class="table-row animate-on-scroll" data-animation-delay={300 + index * 50}>
+							<td class="col-name">{item.name}</td>
+							<td class="col-weight">{item.weightOz} oz</td>
+							<td class="col-qty">{item.quantity}</td>
+							<td class="col-price">${item.price}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<style>
+	.category-table-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		padding: var(--space-3) 0 0;
+		background-color: var(--color-bg-primary);
+		border: var(--border-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-paper);
+		transition:
+			background-color 0.5s ease,
+			border-color 0.5s ease;
+	}
+
+	.category-header {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		padding: 0 var(--space-4) var(--space-2);
+		border-bottom: 1px solid var(--color-border-secondary);
+	}
+
+	.category-title {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.column-headers {
+		display: grid;
+		grid-template-columns: 60px 60px 40px;
+		gap: var(--space-4);
+		align-items: center;
+	}
+
+	.col-label {
+		font-size: var(--font-size-1);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-tertiary);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.col-label.col-weight {
+		text-align: right;
+	}
+
+	.col-label.col-qty {
+		text-align: center;
+	}
+
+	.col-label.col-price {
+		text-align: right;
+	}
+
+	.category-dot {
+		width: 14px;
+		height: 14px;
+		border-radius: 50%;
+		transition: background-color 0.5s ease;
+	}
+
+	.category-title h3 {
+		font-size: var(--font-size-4);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-text-primary);
+		margin: 0;
+	}
+
+	.table-container {
+		overflow-x: auto;
+	}
+
+	.pack-table {
+		width: 100%;
+		border-collapse: collapse;
+		table-layout: fixed;
+	}
+
+	.pack-table tbody tr {
+		display: grid;
+		grid-template-columns: 1fr 60px 60px 40px;
+		gap: var(--space-4);
+		align-items: center;
+		padding: var(--space-2) var(--space-4);
+		border-bottom: 1px solid var(--color-border-secondary);
+		opacity: 0;
+		transform: translateY(10px);
+		transition:
+			opacity 0.4s ease,
+			transform 0.4s ease;
+	}
+
+	.pack-table tbody tr.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.pack-table tbody tr:last-child {
+		border-bottom: none;
+	}
+
+	.pack-table tbody td {
+		padding: 0;
+		font-size: var(--font-size-2);
+		color: var(--color-text-primary);
+	}
+
+	.col-name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.col-weight {
+		text-align: right;
+	}
+
+	.col-qty {
+		text-align: center;
+	}
+
+	.col-price {
+		text-align: right;
+	}
+
+	@media (max-width: 768px) {
+		.category-table-wrapper {
+			padding: var(--space-3) 0 0;
+		}
+
+		.category-header {
+			grid-template-columns: 1fr;
+			gap: var(--space-2);
+			padding: 0 var(--space-3) var(--space-2);
+		}
+
+		.column-headers {
+			display: none;
+		}
+
+		.pack-table tbody tr {
+			grid-template-columns: 1fr 60px 40px;
+			gap: var(--space-1);
+			padding-left: var(--space-3);
+			padding-right: var(--space-3);
+		}
+
+		.pack-table tbody td {
+			font-size: var(--font-size-1);
+		}
+
+		.col-price {
+			display: none;
+		}
+	}
+</style>

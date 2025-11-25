@@ -1,0 +1,344 @@
+---
+import avatar1 from '../../../assets/avatars/avatar-1.webp';
+import avatar2 from '../../../assets/avatars/avatar-2.webp';
+import avatar3 from '../../../assets/avatars/avatar-3.webp';
+import avatar4 from '../../../assets/avatars/avatar-4.webp';
+
+const arcticPalette = {
+	blue: '#1971a6',
+	lightBlue: '#66c3db',
+	purple: '#98b6ff',
+};
+
+const comments = [
+	{
+		id: 1,
+		avatar: avatar1.src,
+		username: 'Alex Chen',
+		timeAgo: '2d ago',
+		content:
+			"Base weight looks good at 12 lbs! Quick question - are you including a bear canister in that? I don't see it listed but it's required for that section.",
+		likes: 24,
+		isPinned: true,
+	},
+	{
+		id: 2,
+		avatar: avatar2.src,
+		username: 'Jordan Martinez',
+		timeAgo: '1d ago',
+		content:
+			'Have you tested that cook system in cold weather? I had the same setup on the JMT and found the fuel canister struggled above 10k ft.',
+		likes: 8,
+	},
+	{
+		id: 3,
+		avatar: avatar4.src,
+		username: 'Sarah Collins',
+		timeAgo: '18h ago',
+		content:
+			"I'd recommend bringing a 20°F bag if you run cold. Sierra nights can drop fast, even in summer, and a 30° might be cutting it close.",
+		likes: 15,
+	},
+];
+---
+
+<script src="../../../scripts/scroll-animations.js"></script>
+
+<div class="shakedowns-demo-wrapper">
+	<div class="comments-section animate-on-scroll">
+		<div class="comments-header">
+			<div class="header-content">
+				<h3 class="header-title">Feedback (3)</h3>
+				<div class="header-tags">
+					<span class="tag tag-weather">Weather Advice</span>
+					<span class="tag tag-gear">Gear Advice</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="comments-list">
+			{
+				comments.map((comment, index) => (
+					<div class="comment-item animate-on-scroll" data-animation-delay={index * 100}>
+						<div class="comment-layout">
+							<img src={comment.avatar} alt={comment.username} class="comment-avatar" />
+							<div class="comment-content">
+								<div class="comment-meta">
+									<span class="comment-username">{comment.username}</span>
+									<span class="comment-separator">•</span>
+									<span class="comment-time">{comment.timeAgo}</span>
+									{comment.isPinned && <span class="pinned-badge">Pinned</span>}
+								</div>
+								<p class="comment-body">{comment.content}</p>
+								<div class="comment-actions">
+									<button class="action-button">
+										<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+											<path d="M7 10v12" />
+											<path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z" />
+										</svg>
+										<span class="action-count">{comment.likes}</span>
+									</button>
+									<button class="action-button">Reply</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				))
+			}
+		</div>
+
+		<div class="comment-input-section">
+			<div class="input-wrapper">
+				<div class="textarea-placeholder">Share your feedback...</div>
+				<div class="button-row">
+					<button class="post-button">Post</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.shakedowns-demo-wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.comments-section {
+		width: 100%;
+		max-width: 700px;
+		background-color: var(--color-bg-primary);
+		border: var(--border-primary);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-paper);
+		display: flex;
+		flex-direction: column;
+		border-top: 3px solid #1971a6;
+	}
+
+	.comments-header {
+		padding: var(--space-3) var(--space-4);
+		border-bottom: 1px solid var(--color-border-secondary);
+		background-color: var(--color-bg-secondary);
+	}
+
+	.header-content {
+		display: flex;
+		align-items: center;
+		gap: var(--space-6);
+		flex-wrap: wrap;
+	}
+
+	.header-title {
+		font-size: var(--font-size-5);
+		font-weight: var(--font-weight-bold);
+		margin: 0;
+		color: var(--color-text-primary);
+	}
+
+	.header-tags {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+	}
+
+	.tag {
+		font-size: var(--font-size-1);
+		padding: var(--space-1) var(--space-2);
+		border-radius: var(--radius);
+		color: white;
+		font-weight: var(--font-weight-bold);
+	}
+
+	.tag-weather {
+		background-color: #6279b8;
+	}
+
+	.tag-gear {
+		background-color: #dd6e42;
+	}
+
+	.comments-list {
+		flex: 1;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.comment-item {
+		padding: var(--space-4);
+		background: var(--color-bg-primary);
+		border-bottom: 1px solid var(--color-border-secondary);
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.5s ease,
+			transform 0.5s ease;
+	}
+
+	.comment-item.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.comment-item:last-child {
+		border-bottom: none;
+	}
+
+	.comment-layout {
+		display: flex;
+		gap: var(--space-3);
+	}
+
+	.comment-avatar {
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		flex-shrink: 0;
+		object-fit: cover;
+	}
+
+	.comment-content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.comment-meta {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		flex-wrap: wrap;
+	}
+
+	.comment-username {
+		font-size: var(--font-size-2);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-primary);
+	}
+
+	.comment-separator {
+		font-size: var(--font-size-1);
+		color: var(--color-text-tertiary);
+		opacity: 0.8;
+	}
+
+	.comment-time {
+		font-size: var(--font-size-2);
+		color: var(--color-text-tertiary);
+		opacity: 0.8;
+	}
+
+	.pinned-badge {
+		font-size: var(--font-size-1);
+		padding: var(--space-1) var(--space-2);
+		background: rgba(0, 0, 0, 0.08);
+		border-radius: var(--radius);
+		color: var(--color-text-secondary);
+		font-weight: var(--font-weight-medium);
+	}
+
+	:global([data-theme='dark']) .pinned-badge {
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.comment-body {
+		font-size: var(--font-size-2);
+		color: var(--color-text-primary);
+		line-height: 1.5;
+		margin: 0;
+	}
+
+	.comment-actions {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
+		margin-left: calc(var(--space-2) * -1);
+	}
+
+	.action-button {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
+		padding: var(--space-1) var(--space-2);
+		background: transparent;
+		border: none;
+		border-radius: var(--radius);
+		cursor: pointer;
+		font-size: var(--font-size-2);
+		color: var(--color-text-secondary);
+		font-weight: var(--font-weight-medium);
+		transition: all 0.15s ease;
+	}
+
+	.action-button:hover {
+		background: var(--color-bg-tertiary);
+	}
+
+	.action-count {
+		font-size: var(--font-size-2);
+		color: var(--color-text-tertiary);
+	}
+
+	.comment-input-section {
+		flex-shrink: 0;
+		padding: var(--space-4);
+		padding-top: var(--space-3);
+		border-top: 1px solid var(--color-border-secondary);
+	}
+
+	.input-wrapper {
+		border: 1px solid var(--color-border-secondary);
+		border-radius: var(--radius);
+		background: var(--color-bg-primary);
+		overflow: hidden;
+	}
+
+	.textarea-placeholder {
+		padding: var(--space-3);
+		font-size: var(--font-size-2);
+		color: var(--color-text-tertiary);
+		min-height: 60px;
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.button-row {
+		display: flex;
+		justify-content: flex-end;
+		padding: var(--space-2) var(--space-3);
+	}
+
+	.post-button {
+		padding: var(--space-2) var(--space-3);
+		background: transparent;
+		border: 1px solid var(--color-border-secondary);
+		border-radius: var(--radius);
+		cursor: pointer;
+		font-size: var(--font-size-2);
+		color: var(--color-text-secondary);
+		font-weight: var(--font-weight-medium);
+		transition: all 0.15s ease;
+	}
+
+	.post-button:hover {
+		background: var(--color-bg-tertiary);
+		border-color: var(--color-border-primary);
+	}
+
+	@media (max-width: 768px) {
+		.comments-header {
+			padding: var(--space-4);
+		}
+
+		.header-content {
+			gap: var(--space-3);
+		}
+
+		.comment-item {
+			padding: var(--space-4) var(--space-3);
+		}
+	}
+</style>

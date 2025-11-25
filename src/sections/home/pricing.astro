@@ -2,41 +2,38 @@
 import { Check } from 'lucide-astro';
 ---
 
-<section id="pricing" class="py-16 pricing-section">
+<section id="pricing" class="pricing-section">
 	<div class="readable-width">
-		<div class="text-center mb-8 md:mb-16">
-			<h3>Choose Your Plan</h3>
-			<p class="text-lg mt-4">Start free, upgrade when you need more features</p>
+		<div class="text-center mb-8 md:mb-12">
+			<h3>Get Started for Free</h3>
+			<p class="text-lg mt-4 font-mono">Upgrade when you need more features</p>
 		</div>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 max-w-4xl mx-auto">
-			<div class="pricing-card p-8 text-center hover-lift">
-				<h3 class="mb-4">Lite Plan</h3>
-				<div class="price mb-6">
-					<span class="text-4xl font-bold">$0</span>
-					<span class="text-lg">/month</span>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-6 max-w-4xl mx-auto">
+			<div class="pricing-card p-6 text-center hover-lift">
+				<h3 class="mb-3">Free</h3>
+				<div class="price mb-4">
+					<span class="text-3xl font-bold">$0</span>
+					<span class="text-base">/month</span>
 				</div>
-				<ul class="text-left mb-8 space-y-3">
-					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> 3 pack lists</li>
+				<ul class="text-left mb-6 space-y-2">
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Create up to 5 packs</li>
 					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Gear closet for organization</li>
-					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Mobile app access</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Save packs for inspiration</li>
 				</ul>
 				<a href="https://tidytrek.co/register" class="btn-outline w-full" role="button">Join For Free</a>
 			</div>
-			<div class="pricing-card p-8 text-center featured hover-lift">
-				<div class="popular-badge">Most Popular</div>
-				<h3 class="mb-4">Pro Plan</h3>
-				<div class="price mb-6">
-					<span class="text-4xl font-bold">$5</span>
-					<span class="text-lg">/month</span>
+			<div class="pricing-card p-6 text-center hover-lift">
+				<h3 class="mb-3">Pro Plan</h3>
+				<div class="price mb-4">
+					<span class="text-3xl font-bold">$3</span>
+					<span class="text-base">/month</span>
 				</div>
-				<ul class="text-left mb-8 space-y-3">
+
+				<ul class="text-left mb-6 space-y-2">
 					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Unlimited pack lists</li>
-					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Photo attachments</li>
-					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Gear closet for organization</li>
-					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Mobile app access</li>
-					<li class="flex items-center">
-						<Check class="w-4 h-4 mr-2 text-sage-500" /> Pack view analytics (coming soon)
-					</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Food bags & meal planning</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Create shakedowns</li>
+					<li class="flex items-center"><Check class="w-4 h-4 mr-2 text-sage-500" /> Pack analytics & insights</li>
 				</ul>
 				<a href="https://tidytrek.co/register" class="btn-primary w-full" role="button">Get Started</a>
 			</div>
@@ -46,6 +43,9 @@ import { Check } from 'lucide-astro';
 
 <style>
 	.pricing-section {
+		padding-top: var(--space-4);
+		padding-bottom: var(--space-12);
+		margin-bottom: var(--space-8);
 		background-color: var(--color-bg-primary);
 	}
 
@@ -55,6 +55,8 @@ import { Check } from 'lucide-astro';
 		border: var(--border-primary);
 		transition: all var(--transition);
 		position: relative;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.pricing-card:hover {
@@ -85,6 +87,10 @@ import { Check } from 'lucide-astro';
 
 	.price {
 		color: var(--color-primary-text);
+	}
+
+	.pricing-card ul {
+		flex: 1;
 	}
 
 	.pricing-card ul li {

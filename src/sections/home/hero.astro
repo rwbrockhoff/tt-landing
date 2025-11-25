@@ -1,9 +1,9 @@
 ---
 import { Backpack, MapPin } from 'lucide-astro';
 import { Image, getImage } from 'astro:assets';
-import desktopPreview from '../../assets/hero/desktop-preview.png';
-import desktopPreviewDark from '../../assets/hero/desktop-preview-dark.png';
 import mountainLandscape from '../../assets/hero/mountain-landscape.webp';
+import tent from '../../assets/hero/tent.webp';
+import PackDashboardDemo from '../../components/features/hero/pack-dashboard-demo.astro';
 
 const optimizedMountain = await getImage({
 	src: mountainLandscape,
@@ -16,22 +16,6 @@ const placeholderMountain = await getImage({
 	src: mountainLandscape,
 	width: 1920,
 	height: 650,
-	quality: 10,
-	format: 'webp',
-});
-
-const placeholderDesktop = await getImage({
-	src: desktopPreview,
-	width: 1024,
-	height: 640,
-	quality: 10,
-	format: 'webp',
-});
-
-const placeholderDesktopDark = await getImage({
-	src: desktopPreviewDark,
-	width: 1024,
-	height: 640,
 	quality: 10,
 	format: 'webp',
 });
@@ -56,6 +40,16 @@ const placeholderDesktopDark = await getImage({
 		decoding="async"
 		onload="this.setAttribute('data-loaded', 'true'); document.getElementById('hero').classList.add('images-loaded');"
 	/>
+	<Image
+		src={tent}
+		alt=""
+		class="tent-image"
+		loading="eager"
+		format="webp"
+		quality={100}
+		widths={[400, 600, 800]}
+		sizes="(max-width: 768px) 0px, 600px"
+	/>
 	<div class="readable-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 		<div class="flex flex-col gap-6 order-1 lg:order-1">
 			<h1>The prettiest way to pack for any adventure.</h1>
@@ -63,57 +57,14 @@ const placeholderDesktopDark = await getImage({
 				Smarter gear planning for hikers & backpackers. Get tidy. Get out there.
 			</p>
 			<div class="hero-actions flex gap-4 flex-col sm:flex-row">
-				<a href="https://tidytrek.co/pk/0bkgbN" class="btn-sierra" role="button">
+				<a href="https://tidytrek.co/p/0bkgbN" class="btn-sierra" role="button">
 					<Backpack class="w-5 h-5 mr-2" />
 					View A Pack
 				</a>
-				<a href="#features" class="btn-outline-sierra" role="button">
-					<MapPin class="w-5 h-5 mr-2" />
-					Explore Features
-				</a>
 			</div>
 		</div>
-		<div class="hero-preview order-2 lg:order-2 hover-lift">
-			<img
-				src={placeholderDesktop.src}
-				alt=""
-				aria-hidden="true"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light app-placeholder"
-			/>
-			<Image
-				src={desktopPreview}
-				alt="TidyTrek desktop app preview showing pack list interface"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-light app-full"
-				loading="eager"
-				fetchpriority="high"
-				format="webp"
-				quality={100}
-				widths={[640, 768, 1024]}
-				sizes="(max-width: 1024px) 100vw, 50vw"
-				width={1024}
-				height={640}
-				onload="this.setAttribute('data-loaded', 'true')"
-			/>
-			<img
-				src={placeholderDesktopDark.src}
-				alt=""
-				aria-hidden="true"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark app-placeholder"
-			/>
-			<Image
-				src={desktopPreviewDark}
-				alt="TidyTrek desktop app preview showing pack list interface in dark mode"
-				class="w-full h-auto rounded-lg desktop-behind-mountain desktop-preview-dark app-full"
-				loading="eager"
-				fetchpriority="high"
-				format="webp"
-				quality={100}
-				widths={[640, 768, 1024]}
-				sizes="(max-width: 1024px) 100vw, 50vw"
-				width={1024}
-				height={640}
-				onload="this.setAttribute('data-loaded', 'true')"
-			/>
+		<div class="hero-preview order-2 lg:order-2">
+			<PackDashboardDemo />
 		</div>
 	</div>
 </section>
@@ -121,7 +72,7 @@ const placeholderDesktopDark = await getImage({
 <style>
 	#hero {
 		position: relative;
-		background-color: var(--color-bg-secondary);
+		background-color: var(--color-bg-primary);
 		padding-bottom: 15vh;
 		height: 100vh;
 	}
@@ -149,82 +100,36 @@ const placeholderDesktopDark = await getImage({
 		line-height: 1.5;
 	}
 
-	.hero-preview img {
-		box-shadow: var(--shadow-paper);
-	}
-
 	.hero-preview {
 		position: relative;
 		width: 100%;
-	}
-
-	.desktop-preview-light,
-	.desktop-preview-dark {
-		border: var(--border-primary);
-		border-radius: 1.5rem;
-		transition: all var(--transition);
-		background-color: var(--color-bg-accent);
-		width: 100%;
-		height: auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* Match hero navy background in dark mode only */
-	:global([data-theme='dark']) .desktop-preview-light,
-	:global([data-theme='dark']) .desktop-preview-dark {
-		background-color: rgba(19, 39, 62, 1);
-	}
-
-	@media (min-width: 1280px) {
-		.desktop-preview-light,
-		.desktop-preview-dark {
-			min-height: 400px;
-		}
-	}
-
-	.desktop-preview-light {
-		display: block;
-	}
-
-	.desktop-preview-dark {
-		display: none;
-	}
-
-	:global([data-theme='light']) .desktop-preview-light {
-		display: block;
-	}
-
-	:global([data-theme='light']) .desktop-preview-dark {
-		display: none;
-	}
-
-	:global([data-theme='dark']) .desktop-preview-light {
-		display: none;
-	}
-
-	:global([data-theme='dark']) .desktop-preview-dark {
-		display: block;
-	}
-
-	.desktop-behind-mountain {
-		position: relative;
 		z-index: 10;
-		border-radius: 1.5rem;
 	}
 
 	.mountain-landscape {
 		position: absolute;
-		bottom: -10vh;
+		bottom: -20vh;
 		left: 0;
 		width: 100%;
 		height: 600px;
 		object-fit: cover;
-		object-position: center top;
+		object-position: center bottom;
 		z-index: 2;
 		pointer-events: none;
 		background-color: transparent;
+	}
+
+	/* Increase height for larger screens to prevent top cutoff */
+	@media (min-width: 1024px) {
+		.mountain-landscape {
+			height: 60vh;
+		}
+	}
+
+	@media (min-width: 1440px) {
+		.mountain-landscape {
+			height: 65vh;
+		}
 	}
 
 	.mountain-placeholder {
@@ -242,27 +147,24 @@ const placeholderDesktopDark = await getImage({
 		opacity: 1;
 	}
 
-	.app-placeholder {
-		position: relative;
-		z-index: 2;
-		opacity: 1;
-	}
-
-	.app-full {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 3;
-		opacity: 0;
-		transition: opacity 0.8s ease-out;
-	}
-
-	.app-full[data-loaded='true'] {
-		opacity: 1;
-	}
-
 	:global([data-theme='dark']) .mountain-landscape {
 		filter: brightness(0.3) contrast(1.2);
+	}
+
+	.tent-image {
+		position: absolute;
+		right: 15%;
+		bottom: 10vh;
+		width: 75px;
+		height: auto;
+		z-index: 4;
+		pointer-events: none;
+		display: none;
+	}
+
+	:global([data-theme='dark']) .tent-image {
+		display: block;
+		filter: brightness(0.75);
 	}
 
 	@media (max-width: 768px) {
@@ -270,9 +172,8 @@ const placeholderDesktopDark = await getImage({
 			display: none;
 		}
 
-		.desktop-preview-light,
-		.desktop-preview-dark {
-			min-height: 200px;
+		.tent-image {
+			display: none;
 		}
 	}
 
@@ -289,8 +190,10 @@ const placeholderDesktopDark = await getImage({
 	@media (max-width: 1024px) {
 		#hero {
 			min-height: auto;
-			padding-top: calc(var(--navbar-height) + var(--space-12));
+			height: auto;
+			padding-top: calc(var(--navbar-height) + var(--space-8));
 			padding-bottom: var(--space-12);
+			border-bottom: var(--border-primary);
 		}
 	}
 

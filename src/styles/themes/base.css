@@ -6,15 +6,17 @@
 	--font-mono: 'JetBrains Mono', monospace;
 
 	/* Colors */
-	--sage-100: #daf1e3;
-	--sage-200: #b8e2cc;
-	--sage-300: #8acbad;
-	--sage-400: #59ae89;
-	--sage-500: #338866;
-	--sage-600: #267557;
-	--sage-700: #1f5d48;
-	--sage-800: #1a4b3a;
-	--sage-900: #173d30;
+	--sage-50: #f1f8f5;
+	--sage-100: #dcefe5;
+	--sage-200: #bcdecd;
+	--sage-300: #90c5af;
+	--sage-400: #61a68c;
+	--sage-500: #3a7e66;
+	--sage-600: #2e6d59;
+	--sage-700: #255748;
+	--sage-800: #1f463a;
+	--sage-900: #1a3a30;
+	--sage-950: #0e201c;
 
 	--dune-50: #f6f4f0;
 	--dune-100: #e9e3d8;
@@ -28,17 +30,17 @@
 	--dune-900: #503933;
 	--dune-950: #2d1e1b;
 
-	--sierra-50: #fcf8f0;
-	--sierra-100: #f9eddb;
-	--sierra-200: #f2d9b6;
-	--sierra-300: #e9be88;
-	--sierra-400: #df9a57;
-	--sierra-500: #d88037;
-	--sierra-600: #ca692c;
-	--sierra-700: #a75127;
-	--sierra-800: #864226;
-	--sierra-900: #6d3821;
-	--sierra-950: #3a1b10;
+	--sierra-50: #f7ebdd;
+	--sierra-100: #eed3ba;
+	--sierra-200: #e2b58f;
+	--sierra-300: #d69061;
+	--sierra-400: #cd7442;
+	--sierra-500: #bf5f37;
+	--sierra-600: #9f4b2f;
+	--sierra-700: #803d2c;
+	--sierra-800: #673427;
+	--sierra-900: #371913;
+	--sierra-950: #1c0c09;
 
 	--gray-100: #f3f4f6;
 	--gray-200: #e5e7eb;
@@ -62,6 +64,10 @@
 	--font-size-6: 1.25rem; /* 20px */
 	--font-size-7: 1.5rem; /* 24px */
 	--font-size-8: 2rem; /* 32px */
+	--font-size-9: 2.5rem; /* 40px */
+	--font-size-10: 3rem; /* 48px */
+	--font-size-11: 3.5rem; /* 56px */
+	--font-size-12: 4rem; /* 64px */
 
 	--font-weight-normal: 400;
 	--font-weight-medium: 500;

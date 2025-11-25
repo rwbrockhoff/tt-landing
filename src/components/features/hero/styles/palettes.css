@@ -1,0 +1,68 @@
+/* User Accent Color Palette Options */
+/* Used for pack chart visualization and category indicators */
+
+[data-theme-palette='tidytrek'] {
+	--palette-01: #338866;
+	--palette-02: #78b87a;
+	--palette-03: #5f84a2;
+	--palette-04: #7bb8c0;
+	--palette-05: #a7b5fe;
+	--palette-06: #f36f3b;
+	--palette-07: #feb737;
+	--palette-08: #dabb9f;
+}
+
+[data-theme-palette='atlas'] {
+	--palette-01: #5c7453;
+	--palette-02: #acb48c;
+	--palette-03: #ba9473;
+	--palette-04: #7a4020;
+	--palette-05: #c36b2b;
+	--palette-06: #dcc6a0;
+	--palette-07: #535f45;
+	--palette-08: #bcccbc;
+}
+
+[data-theme-palette='canyon'] {
+	--palette-01: #dd7c2b;
+	--palette-02: #f6c6ae;
+	--palette-03: #d8af5f;
+	--palette-04: #f4be69;
+	--palette-05: #de9f7e;
+	--palette-06: #8f5c3d;
+	--palette-07: #db9444;
+	--palette-08: #d9b690;
+}
+
+[data-theme-palette='wildflower'] {
+	--palette-01: #308f7f;
+	--palette-02: #49c5d3;
+	--palette-03: #f299b7;
+	--palette-04: #70a0db;
+	--palette-05: #824968;
+	--palette-06: #ed503d;
+	--palette-07: #ed9c00;
+	--palette-08: #1b633b;
+}
+
+[data-theme-palette='arctic'] {
+	--palette-01: #1971a6;
+	--palette-02: #66c3db;
+	--palette-03: #98b6ff;
+	--palette-04: #66a7e4;
+	--palette-05: #c98ca7;
+	--palette-06: #899af1;
+	--palette-07: #5fa8d3;
+	--palette-08: #34a0a4;
+}
+
+[data-theme-palette='twilight'] {
+	--palette-01: #4d4d4d;
+	--palette-02: #606060;
+	--palette-03: #737373;
+	--palette-04: #868686;
+	--palette-05: #999999;
+	--palette-06: #acacac;
+	--palette-07: #bfbfbf;
+	--palette-08: #d2d2d2;
+}

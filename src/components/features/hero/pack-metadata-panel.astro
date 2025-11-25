@@ -1,0 +1,80 @@
+---
+import { Link2 } from 'lucide-astro';
+
+interface Props {
+	packName: string;
+	packDescription: string;
+	isPublic: boolean;
+	tags: string[];
+}
+
+const { packName, packDescription, isPublic, tags } = Astro.props;
+---
+
+<div class="metadata-panel animate-on-scroll">
+	<h2 class="pack-name">{packName}</h2>
+
+	<div class="gear-loadout">
+		<Link2 size={14} />
+		<span>Gear Loadout</span>
+	</div>
+
+	<p class="pack-description">{packDescription}</p>
+
+	<div class="pack-tags">
+		{tags.map((tag) => <span class="tag">{tag}</span>)}
+	</div>
+</div>
+
+<style>
+	.metadata-panel {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-1);
+	}
+
+	.pack-name {
+		font-size: var(--font-size-4);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-text-primary);
+		margin: 0;
+	}
+
+	.pack-description {
+		font-size: var(--font-size-2);
+		color: var(--color-text-secondary);
+		margin: 0;
+		line-height: 1.5;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.gear-loadout {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
+		font-size: var(--font-size-2);
+		color: var(--color-text-tertiary);
+	}
+
+	.gear-loadout svg {
+		flex-shrink: 0;
+	}
+
+	.pack-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2);
+	}
+
+	.tag {
+		font-size: 10px;
+		padding: 2px var(--space-1);
+		background-color: var(--color-bg-secondary);
+		border-radius: var(--radius);
+		color: var(--color-text-secondary);
+		font-weight: var(--font-weight-medium);
+	}
+</style>

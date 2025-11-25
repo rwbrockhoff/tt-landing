@@ -1,0 +1,294 @@
+---
+const metrics = [
+	{
+		id: 1,
+		title: 'Total Pack Views',
+		value: '3,247',
+		change: '+18%',
+		changeType: 'positive',
+		trend: [20, 35, 28, 42, 38, 55, 48, 62, 58, 71, 67, 82, 78, 95],
+	},
+	{
+		id: 2,
+		title: 'Pack Item Clicks',
+		value: '892',
+		change: '+24%',
+		changeType: 'positive',
+		trend: [15, 22, 18, 30, 25, 38, 32, 45, 40, 52, 48, 60, 55, 68],
+	},
+	{
+		id: 3,
+		title: 'Total Bookmarks',
+		value: '156',
+		change: '+12%',
+		changeType: 'positive',
+		trend: [8, 12, 10, 15, 13, 18, 16, 22, 20, 25, 23, 28, 26, 32],
+	},
+];
+---
+
+<script src="../../../scripts/scroll-animations.js"></script>
+
+<div class="analytics-demo-wrapper">
+	<div class="analytics-dashboard animate-on-scroll">
+		<div class="metrics-grid">
+			{
+				metrics.map((metric, index) => (
+					<div class="metric-card animate-on-scroll" data-animation-delay={index * 100}>
+						<div class="metric-header">
+							<h3 class="metric-title">{metric.title}</h3>
+							<span class={`change-badge change-${metric.changeType}`}>{metric.change}</span>
+						</div>
+						<p class="metric-value">{metric.value}</p>
+						<div class="trend-chart">
+							{metric.trend.map((val) => (
+								<div class="trend-bar" style={`height: ${val}%`} />
+							))}
+						</div>
+					</div>
+				))
+			}
+		</div>
+
+		<div class="chart-section animate-on-scroll" data-animation-delay="300">
+			<div class="chart-header">
+				<h3 class="chart-title">Most Clicked Items</h3>
+			</div>
+			<div class="bar-chart">
+				<div class="bar-item">
+					<span class="bar-label">Durston Gear X Mid 2</span>
+					<div class="bar-track">
+						<div class="bar-fill bar-fill-1" data-width="85%"></div>
+						<span class="bar-value">124</span>
+					</div>
+				</div>
+				<div class="bar-item">
+					<span class="bar-label">Gossamer Gear Mariposa</span>
+					<div class="bar-track">
+						<div class="bar-fill bar-fill-2" data-width="68%"></div>
+						<span class="bar-value">98</span>
+					</div>
+				</div>
+				<div class="bar-item">
+					<span class="bar-label">Nitecore NU25</span>
+					<div class="bar-track">
+						<div class="bar-fill bar-fill-3" data-width="52%"></div>
+						<span class="bar-value">75</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.analytics-demo-wrapper {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.analytics-dashboard {
+		width: 100%;
+		max-width: 800px;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-6);
+	}
+
+	.metrics-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-4);
+	}
+
+	.metric-card {
+		background-color: var(--color-bg-primary);
+		border: var(--border-primary);
+		border-radius: var(--radius-lg);
+		padding: var(--space-4);
+		box-shadow: var(--shadow-paper);
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.5s ease,
+			transform 0.5s ease;
+	}
+
+	.metric-card.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.metric-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: var(--space-2);
+	}
+
+	.metric-title {
+		font-size: var(--font-size-2);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-secondary);
+	}
+
+	.change-badge {
+		font-size: var(--font-size-1);
+		padding: var(--space-1) var(--space-2);
+		border-radius: var(--radius);
+		font-weight: var(--font-weight-medium);
+	}
+
+	.change-positive {
+		background-color: rgba(34, 197, 94, 0.1);
+		color: #15803d;
+	}
+
+	.change-negative {
+		background-color: rgba(239, 68, 68, 0.1);
+		color: #ef4444;
+	}
+
+	.metric-value {
+		font-size: var(--font-size-7);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-3);
+	}
+
+	.trend-chart {
+		width: 100%;
+		height: 40px;
+		display: flex;
+		align-items: flex-end;
+		gap: 2px;
+	}
+
+	.trend-bar {
+		flex: 1;
+		background-color: #308f7f;
+		border-radius: 1px;
+		transform: scaleY(0);
+		transform-origin: bottom;
+		transition: transform 0.6s ease;
+	}
+
+	.metric-card.is-visible .trend-bar {
+		transform: scaleY(1);
+	}
+
+	.chart-section {
+		background-color: var(--color-bg-primary);
+		border: var(--border-primary);
+		border-radius: var(--radius-lg);
+		padding: var(--space-6);
+		box-shadow: var(--shadow-paper);
+		opacity: 0;
+		transform: translateY(20px);
+		transition:
+			opacity 0.5s ease,
+			transform 0.5s ease;
+	}
+
+	.chart-section.is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.chart-header {
+		margin-bottom: var(--space-4);
+	}
+
+	.chart-title {
+		font-size: var(--font-size-4);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-text-primary);
+	}
+
+	.bar-chart {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.bar-item {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.bar-label {
+		font-size: var(--font-size-2);
+		color: var(--color-text-primary);
+		font-weight: var(--font-weight-medium);
+	}
+
+	.bar-track {
+		position: relative;
+		height: 32px;
+		background-color: var(--color-bg-secondary);
+		border-radius: var(--radius);
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+	}
+
+	.bar-fill {
+		height: 100%;
+		border-radius: var(--radius);
+		width: 0;
+		transition: width 0.8s ease;
+	}
+
+	.chart-section.is-visible .bar-fill-1 {
+		width: 85%;
+	}
+
+	.chart-section.is-visible .bar-fill-2 {
+		width: 68%;
+	}
+
+	.chart-section.is-visible .bar-fill-3 {
+		width: 52%;
+	}
+
+	.bar-fill-1 {
+		background: #308f7f;
+	}
+
+	.bar-fill-2 {
+		background: #49c5d3;
+	}
+
+	.bar-fill-3 {
+		background: #70a0db;
+	}
+
+	.bar-value {
+		position: absolute;
+		right: var(--space-3);
+		font-size: var(--font-size-2);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-text-primary);
+	}
+
+	@media (max-width: 768px) {
+		.metrics-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.metric-card:nth-child(2),
+		.metric-card:nth-child(3) {
+			display: none;
+		}
+
+		.metric-value {
+			font-size: var(--font-size-6);
+		}
+
+		.chart-section {
+			padding: var(--space-4);
+		}
+	}
+</style>

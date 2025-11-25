@@ -1,0 +1,108 @@
+---
+interface Props {
+	totalWeight: string;
+	categories: Array<{
+		name: string;
+		weight: number;
+		percentage: number;
+		color: string;
+	}>;
+}
+
+const { totalWeight, categories } = Astro.props;
+
+const radius = 70;
+const circumference = 2 * Math.PI * radius;
+let currentOffset = 0;
+
+const segments = categories.map((category) => {
+	const segmentLength = (category.percentage / 100) * circumference;
+	const offset = currentOffset;
+	currentOffset += segmentLength;
+
+	return {
+		...category,
+		offset,
+		length: segmentLength,
+	};
+});
+---
+
+<div class="chart-wrapper animate-on-scroll" data-animation-delay="100">
+	<div class="chart-container">
+		<svg class="donut-chart" viewBox="0 0 200 200">
+			<circle class="chart-background" cx="100" cy="100" r={radius}></circle>
+
+			{
+				segments.map((segment) => (
+					<circle
+						class="chart-segment"
+						cx="100"
+						cy="100"
+						r={radius}
+						style={`
+							stroke: ${segment.color};
+							stroke-dasharray: ${segment.length} ${circumference};
+							stroke-dashoffset: ${-segment.offset};
+						`}
+					/>
+				))
+			}
+		</svg>
+	</div>
+</div>
+
+<style>
+	.chart-wrapper {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	.chart-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.donut-chart {
+		width: 150px;
+		height: 150px;
+		transform: rotate(-90deg);
+	}
+
+	.chart-background {
+		fill: none;
+		stroke: var(--color-bg-secondary);
+		stroke-width: 40;
+	}
+
+	.chart-segment {
+		fill: none;
+		stroke-width: 40;
+		transition: stroke 0.5s ease;
+	}
+
+	@media (max-width: 768px) {
+		.chart-wrapper {
+			justify-content: flex-end;
+			align-items: start;
+			align-self: start;
+		}
+
+		.chart-container {
+			align-items: start;
+			height: auto;
+		}
+
+		.donut-chart {
+			width: 150px;
+			height: 150px;
+		}
+
+		.chart-background,
+		.chart-segment {
+			stroke-width: 36;
+		}
+	}
+</style>

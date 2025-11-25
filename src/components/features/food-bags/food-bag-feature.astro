@@ -1,0 +1,35 @@
+---
+import FoodBagChartDemo from './food-bag-chart-demo.astro';
+
+interface Props {
+	title: string;
+	subtitle: string;
+	photoLeft?: boolean;
+}
+
+const { title, subtitle, photoLeft = false } = Astro.props;
+---
+
+<section class=`feature-showcase`>
+	<div class="readable-width">
+		<div class={`feature-grid ${photoLeft ? 'photo-left' : 'photo-right'}`}>
+			<div class="feature-content">
+				<h2 class="feature-title">{title}</h2>
+				<p class="feature-subtitle">{subtitle}</p>
+				<a href="https://tidytrek.co/register" class="btn-primary btn-md">Sign Up</a>
+			</div>
+			<div class="feature-chart-wrapper feature-image-wrapper">
+				<FoodBagChartDemo />
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	@import '../styles/features.css';
+
+	.feature-chart-wrapper {
+		position: relative;
+		width: 100%;
+	}
+</style>

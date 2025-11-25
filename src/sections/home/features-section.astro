@@ -1,0 +1,33 @@
+---
+import SavedPacksFeature from '../../components/features/saved-packs/saved-packs-feature.astro';
+import FoodBagFeature from '../../components/features/food-bags/food-bag-feature.astro';
+import ShakedownsFeature from '../../components/features/shakedowns/shakedowns-feature.astro';
+import AnalyticsFeature from '../../components/features/analytics/analytics-feature.astro';
+---
+
+<div class="flex flex-col gap-8 py-8">
+	<SavedPacksFeature
+		title="Save & Discover Packs"
+		subtitle="Save your favorite gear setups from other hikers & backpackers and discover new gear."
+		photoLeft={false}
+	/>
+
+	<FoodBagFeature
+		title="Food Bags & Meal Planning"
+		subtitle="Organize meal planning with calorie tracking. Plan for weekend trips, resupply boxes, or aid stations."
+		imageAlt="TidyTrek food bags feature showing meal planning by day"
+		photoLeft={true}
+	/>
+
+	<ShakedownsFeature
+		title="Create Shakedowns"
+		subtitle="Share your gear and get feedback all in one place - no more jumping between apps."
+		photoLeft={false}
+	/>
+
+	<AnalyticsFeature
+		title="Track Your Analytics"
+		subtitle="Get detailed insights on your community engagement and pack performance."
+		photoLeft={true}
+	/>
+</div>
