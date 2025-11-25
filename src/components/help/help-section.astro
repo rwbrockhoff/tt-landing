@@ -1,0 +1,38 @@
+---
+import { Pin } from 'lucide-astro';
+
+type Props = {
+	title: string;
+};
+
+const { title } = Astro.props;
+---
+
+<section class="help-section">
+	<h2><Pin size={20} /> {title}</h2>
+	<div class="help-items">
+		<slot />
+	</div>
+</section>
+
+<style>
+	.help-section {
+		margin-bottom: var(--space-8);
+	}
+
+	h2 {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		font-size: var(--font-size-6);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-4);
+	}
+
+	.help-items {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+</style>

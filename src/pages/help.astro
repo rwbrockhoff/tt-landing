@@ -1,0 +1,65 @@
+---
+import MainLayout from '../layouts/main-layout.astro';
+import HelpSection from '../components/help/help-section.astro';
+import HelpItem from '../components/help/help-item.astro';
+import { Map } from 'lucide-astro';
+---
+
+<MainLayout title="Help">
+	<div class="help-page">
+		<div class="readable-width">
+			<h1><Map size={32} /> How can we help?</h1>
+			<p class="subtitle">Answers to common questions about using Tidytrek</p>
+
+			<div class="flex flex-col gap-8">
+				<HelpSection title="Getting Started">
+					<HelpItem question="How do I create my first pack?">
+						<p>From your dashboard, click the <strong>New Pack</strong> button to create a new gear list.</p>
+						<ul>
+							<li>Give your pack a name (e.g., "JMT Thru-Hike")</li>
+							<li>Add categories to organize your gear</li>
+							<li>Add items to each category</li>
+						</ul>
+					</HelpItem>
+					<HelpItem question="What's the difference between Base Weight and Total Weight?">
+						<p>
+							<strong>Base Weight</strong> is the weight of your pack without consumables (food, water, fuel). This is the
+							standard measure backpackers use to compare pack weights.
+						</p>
+						<p><strong>Total Weight</strong> includes everything — base weight plus all consumables.</p>
+					</HelpItem>
+				</HelpSection>
+			</div>
+		</div>
+	</div>
+</MainLayout>
+
+<style>
+	.help-page {
+		min-height: 100%;
+		padding-top: calc(var(--navbar-height) + var(--space-8));
+		padding-bottom: var(--space-12);
+		background-color: var(--color-bg-primary);
+	}
+
+	.readable-width {
+		max-width: 800px;
+	}
+
+	h1 {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-3);
+		font-size: var(--font-size-8);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-text-primary);
+		padding: var(--space-8) 0 var(--space-2);
+	}
+
+	.subtitle {
+		text-align: center;
+		color: var(--color-text-secondary);
+		margin-bottom: var(--space-8);
+	}
+</style>
