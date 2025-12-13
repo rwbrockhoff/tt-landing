@@ -1,0 +1,53 @@
+---
+import PackDashboardDemo from '../../components/features/hero/pack-dashboard-demo.astro';
+---
+
+<section class="hero-section">
+	<div class="readable-width text-center">
+		<h1>Lighterpack needed a refresh.</h1>
+	</div>
+	<div class="demo-wrapper">
+		<PackDashboardDemo />
+	</div>
+	<div class="readable-width text-center">
+		<h2 class="hero-statement">So we built one.</h2>
+	</div>
+</section>
+
+<style>
+	.hero-section {
+		padding: 4rem 0;
+	}
+
+	.demo-wrapper {
+		margin: var(--space-8) auto;
+		max-width: 750px;
+		padding: 0 var(--space-4);
+	}
+
+	.hero-statement {
+		margin-bottom: var(--space-4);
+	}
+
+	.hero-section h1 {
+		color: var(--color-text-primary);
+	}
+
+	@media (max-width: 768px) {
+		.hero-section {
+			padding: 2rem 0;
+		}
+
+		.hero-section h1 {
+			font-size: 2.25rem;
+		}
+
+		.hero-statement {
+			font-size: 2rem;
+		}
+
+		.demo-wrapper {
+			margin: var(--space-6) auto;
+		}
+	}
+</style>

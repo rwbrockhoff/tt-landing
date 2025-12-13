@@ -1,0 +1,81 @@
+---
+import { Backpack, Utensils, MessageCircle } from 'lucide-astro';
+---
+
+<section class="features-section">
+	<div class="readable-width">
+		<h3 class="section-header">The prettiest way to organize gear for any adventure.</h3>
+		<p class="section-intro">Join for free. Pro features for serious adventurers.</p>
+		<div class="features-grid">
+			<div class="feature-card">
+				<Backpack class="feature-icon" />
+				<h4>Pack Lists</h4>
+				<p>Organize gear for any adventure with drag-and-drop simplicity.</p>
+			</div>
+			<div class="feature-card">
+				<Utensils class="feature-icon" />
+				<h4>Food Bags</h4>
+				<p>Plan meals with calorie tracking for resupply boxes or aid stations.</p>
+			</div>
+			<div class="feature-card">
+				<MessageCircle class="feature-icon" />
+				<h4>Shakedowns</h4>
+				<p>Get feedback on your gear from the community, all in one place.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.features-section {
+		padding: var(--space-12) 0;
+		text-align: center;
+	}
+
+	.features-section .section-header {
+		margin-bottom: var(--space-2);
+	}
+
+	.features-section .section-intro {
+		color: var(--color-text-secondary);
+		font-size: 1.125rem;
+		margin-bottom: var(--space-8);
+	}
+
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-6);
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.feature-card {
+		padding: var(--space-6);
+		background-color: var(--color-bg-secondary);
+		border-radius: 0.5rem;
+		border: var(--border-primary);
+	}
+
+	.feature-card h4 {
+		margin-bottom: var(--space-2);
+	}
+
+	.feature-card p {
+		color: var(--color-text-secondary);
+		font-size: 0.9375rem;
+	}
+
+	.feature-icon {
+		width: 2rem;
+		height: 2rem;
+		color: var(--sierra-600);
+		margin: 0 auto var(--space-3);
+	}
+
+	@media (max-width: 768px) {
+		.features-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
