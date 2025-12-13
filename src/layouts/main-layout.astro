@@ -19,10 +19,11 @@ import Footer from '~/components/footer.astro';
 import CookieConsent from '~/components/legal/cookie-consent.astro';
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '../constants';
-const { title = 'Pack organization for backpackers and travelers.' } = Astro.props;
+const { title = 'Pack organization for backpackers and travelers.', description = SITE_DESCRIPTION } = Astro.props;
 
 type Props = {
 	title?: string;
+	description?: string;
 };
 ---
 
@@ -31,12 +32,14 @@ type Props = {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={SITE_DESCRIPTION} />
-		<meta property="og:title" content={`${SITE_TITLE} - ${title}`} />
-		<meta property="og:description" content={SITE_DESCRIPTION} />
+		<meta name="description" content={description} />
+		<meta property="og:title" content={`${SITE_TITLE} | ${title}`} />
+		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
 		<meta property="og:image" content="https://tidytrek.co/landing/tidytrek-og.png" />
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={`${SITE_TITLE} | ${title}`} />
+		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content="https://tidytrek.co/landing/tidytrek-og.png" />
 
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -70,7 +73,7 @@ type Props = {
 			};
 		</script>
 
-		<title>{SITE_TITLE} - {title}</title>
+		<title>{SITE_TITLE} | {title}</title>
 	</head>
 	<body>
 		<Navbar />

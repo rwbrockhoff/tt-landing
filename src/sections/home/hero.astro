@@ -52,10 +52,11 @@ const placeholderMountain = await getImage({
 	/>
 	<div class="readable-width grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 		<div class="flex flex-col gap-6 order-1 lg:order-1">
-			<h1>The prettiest way to pack for any adventure.</h1>
-			<p class="hero-subtitle font-mono max-w-2xl">
-				Smarter gear planning for hikers & backpackers. Get tidy. Get out there.
-			</p>
+			<h1 class="sr-only">Backpacking Gear Lists & Pack Planning</h1>
+			<h2 class="hero-title">The prettiest way to pack for any adventure.</h2>
+			<h3 class="hero-subtitle font-mono max-w-2xl">
+				Build gear lists, track pack weight, and organize everything you carry.
+			</h3>
 			<div class="hero-actions flex gap-4 flex-col sm:flex-row">
 				<a href="https://tidytrek.co/p/0bkgbN" class="btn-sierra" role="button">
 					<Backpack class="w-5 h-5 mr-2" />
@@ -87,7 +88,7 @@ const placeholderMountain = await getImage({
 		background: linear-gradient(180deg, rgba(19, 39, 62, 1) 0%, rgba(19, 39, 62, 1) 50%, rgba(17, 79, 150, 1) 100%);
 	}
 
-	#hero h1 {
+	.hero-title {
 		font-size: 4rem;
 		font-weight: 800;
 		letter-spacing: -0.025em;
@@ -96,6 +97,7 @@ const placeholderMountain = await getImage({
 
 	.hero-subtitle {
 		font-size: var(--font-size-5);
+		font-weight: 400;
 		color: var(--color-text-primary);
 		line-height: 1.5;
 	}
@@ -198,7 +200,7 @@ const placeholderMountain = await getImage({
 	}
 
 	@media (max-width: 768px) {
-		#hero h1 {
+		.hero-title {
 			font-size: 3rem;
 		}
 
