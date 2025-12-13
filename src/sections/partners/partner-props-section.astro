@@ -1,0 +1,153 @@
+---
+import { Users, TrendingUp, Building } from 'lucide-astro';
+---
+
+<section class="partner-props-section">
+	<div class="readable-width">
+		<h3 class="section-header">Built for people like you.</h3>
+		<p class="section-intro">Whether you're leading trips, growing an audience, or building culture.</p>
+
+		<div class="partner-rows">
+			<div class="partner-row">
+				<div class="partner-image">
+					<img
+						src="https://images.unsplash.com/photo-1618787080359-eab12b2f5923?w=600&h=400&fit=crop"
+						alt="Group camping in snow-covered mountains"
+					/>
+				</div>
+				<div class="partner-content">
+					<h4><Users class="partner-icon" />Guides</h4>
+					<p>
+						Give clients a simple way to plan and organize gear for upcoming trips. Less back-and-forth, more time on
+						the trail.
+					</p>
+				</div>
+			</div>
+
+			<div class="partner-row reverse">
+				<div class="partner-image">
+					<img
+						src="https://images.unsplash.com/photo-1757620859111-c125d6812c52?w=600&h=400&fit=crop"
+						alt="Hikers near mountain peaks"
+					/>
+				</div>
+				<div class="partner-content">
+					<h4><TrendingUp class="partner-icon" />Influencers</h4>
+					<p>
+						Track your pack analytics and share performance with brands. Built-in affiliate links so you keep what you
+						earn.
+					</p>
+				</div>
+			</div>
+
+			<div class="partner-row">
+				<div class="partner-image">
+					<img
+						src="https://images.unsplash.com/photo-1569918970203-ea053ffda098?w=600&h=400&fit=crop"
+						alt="Team hiking together outdoors"
+					/>
+				</div>
+				<div class="partner-content">
+					<h4><Building class="partner-icon" />Organizations</h4>
+					<p>Give your team a tool they'll actually use. A perk that fits your outdoor culture.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.partner-props-section {
+		padding: var(--space-12) 0;
+		text-align: center;
+	}
+
+	.partner-props-section .section-header {
+		margin-bottom: var(--space-2);
+	}
+
+	.partner-props-section .section-intro {
+		color: var(--color-text-secondary);
+		font-size: 1.125rem;
+		margin-bottom: var(--space-12);
+	}
+
+	.partner-rows {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-12);
+		max-width: 900px;
+		margin: 0 auto;
+	}
+
+	.partner-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-8);
+		align-items: center;
+		text-align: left;
+	}
+
+	.partner-row.reverse {
+		direction: rtl;
+	}
+
+	.partner-row.reverse > * {
+		direction: ltr;
+	}
+
+	.partner-image {
+		border-radius: 0.5rem;
+		overflow: hidden;
+	}
+
+	.partner-image img {
+		width: 100%;
+		height: 280px;
+		object-fit: cover;
+		display: block;
+	}
+
+	.partner-content h4 {
+		display: flex;
+		align-items: center;
+		gap: var(--space-2);
+		margin-bottom: var(--space-3);
+		font-size: 1.5rem;
+	}
+
+	.partner-icon {
+		width: 1.5rem;
+		height: 1.5rem;
+		color: var(--sierra-600);
+	}
+
+	.partner-content p {
+		color: var(--color-text-secondary);
+		font-size: 1.0625rem;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 768px) {
+		.partner-row {
+			grid-template-columns: 1fr;
+			gap: var(--space-4);
+		}
+
+		.partner-row.reverse {
+			direction: ltr;
+		}
+
+		.partner-image img {
+			height: 220px;
+		}
+
+		.partner-content {
+			text-align: center;
+		}
+
+		.partner-content h4 {
+			justify-content: center;
+		}
+	}
+</style>
