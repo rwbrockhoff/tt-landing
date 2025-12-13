@@ -1,0 +1,76 @@
+---
+type Props = {
+	question: string;
+};
+
+const { question } = Astro.props;
+---
+
+<details class="help-item">
+	<summary>{question}</summary>
+	<div class="answer">
+		<slot />
+	</div>
+</details>
+
+<style>
+	.help-item {
+		border: 1px solid var(--color-text-tertiary);
+		background-color: var(--color-bg-secondary);
+	}
+
+	summary {
+		padding: var(--space-3) var(--space-4);
+		font-size: var(--font-size-5);
+		font-weight: var(--font-weight-medium);
+		color: var(--color-text-primary);
+		cursor: pointer;
+		list-style: none;
+	}
+
+	summary::-webkit-details-marker {
+		display: none;
+	}
+
+	summary::before {
+		content: '+';
+		margin-right: var(--space-2);
+		font-weight: var(--font-weight-normal);
+		color: var(--color-text-secondary);
+	}
+
+	details[open] {
+		box-shadow: var(--shadow-paper);
+	}
+
+	details[open] summary {
+		border-bottom: 1px solid var(--color-text-tertiary);
+	}
+
+	details[open] summary::before {
+		content: '−';
+	}
+
+	.answer {
+		padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) + 1ch + var(--space-2));
+		font-size: var(--font-size-4);
+		line-height: 1.5;
+	}
+
+	.answer :global(p) {
+		margin-bottom: var(--space-2);
+	}
+
+	.answer :global(ul) {
+		margin-left: var(--space-4);
+		margin-bottom: var(--space-2);
+	}
+
+	.answer :global(li) {
+		margin-bottom: var(--space-1);
+	}
+
+	.answer :global(strong) {
+		font-weight: var(--font-weight-medium);
+	}
+</style>

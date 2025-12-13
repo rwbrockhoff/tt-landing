@@ -1,0 +1,126 @@
+---
+import { Image } from 'astro:assets';
+import ryanProfile from '../../assets/about/ryan-profile-photo.png';
+import jaclynProfile from '../../assets/about/jaclyn-profile-photo.png';
+---
+
+<section id="about" class="py-16">
+	<div class="readable-width">
+		<h3 class="section-intro">We're Ryan & Jaclyn. Nice to meet ya 👋🏻</h3>
+		<p class="section-subline">Thru-hikers, guides, small business owners based in Colorado.</p>
+		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+			<div class="founder-card">
+				<div class="founder-photo-header">
+					<Image
+						src={ryanProfile}
+						alt="Ryan, founder of TidyTrek and Cottage Code"
+						class="founder-header-image"
+						loading="lazy"
+						format="webp"
+						widths={[600, 800]}
+						sizes="(max-width: 768px) 100vw, 400px"
+					/>
+				</div>
+				<div class="founder-content">
+					<h3 class="mb-2">Ryan</h3>
+					<p class="font-mono text-sm mb-4">Software Engineer</p>
+					<p>
+						I'm a software engineer, backpacker, and trail runner. I built TidyTrek for the outdoor community because I
+						wanted a better way to organize my own gear.
+					</p>
+				</div>
+			</div>
+			<div class="founder-card">
+				<div class="founder-photo-header">
+					<Image
+						src={jaclynProfile}
+						alt="Jaclyn, founder of Salka Designs cottage gear"
+						class="founder-header-image"
+						loading="lazy"
+						format="webp"
+						widths={[600, 800]}
+						sizes="(max-width: 768px) 100vw, 400px"
+					/>
+				</div>
+				<div class="founder-content">
+					<h3 class="mb-2">Jaclyn</h3>
+					<p class="font-mono text-sm mb-4">
+						Designer - <a href="https://salkadesigns.com" target="_blank" rel="noopener noreferrer">Sälka Designs</a>
+					</p>
+					<p>
+						I craft ultralight bags and pouches for backpackers and artists! I hope to inspire others to get outdoors
+						and create art on the trail.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.section-intro {
+		text-align: center;
+		margin-bottom: var(--space-2);
+		color: var(--color-text-primary);
+	}
+
+	.section-subline {
+		text-align: center;
+		margin-bottom: var(--space-8);
+		color: var(--color-text-secondary);
+		font-size: var(--text-lg);
+	}
+
+	.founder-card {
+		background-color: var(--color-bg-primary);
+		border-radius: 0.5rem;
+		border: var(--border-primary);
+		box-shadow: var(--shadow-classic);
+		transition: all var(--transition);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.founder-card:hover {
+		transform: translateY(-2px) rotate(-0.5deg);
+		box-shadow: var(--shadow-paper);
+	}
+
+	:global([data-theme='dark']) .founder-card {
+		background-color: var(--sierra-400);
+	}
+
+	.founder-photo-header {
+		width: 100%;
+		height: 300px;
+		overflow: hidden;
+	}
+
+	.founder-header-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: sepia(10%) saturate(95%) contrast(102%);
+	}
+
+	.founder-content {
+		padding: 1.5rem;
+		text-align: left;
+	}
+
+	.founder-content a {
+		color: var(--sierra-800);
+	}
+
+	.founder-content .font-mono {
+		border-bottom: var(--border-primary);
+		padding-bottom: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.founder-card h3 {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: var(--color-text-primary);
+	}
+</style>

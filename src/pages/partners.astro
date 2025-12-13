@@ -1,0 +1,30 @@
+---
+import MainLayout from '../layouts/main-layout.astro';
+import HeroSection from '../sections/shared/hero-section.astro';
+import FeaturesSection from '../sections/shared/features-section.astro';
+import FoundersSection from '../sections/shared/founders-section.astro';
+import ValuesSection from '../sections/shared/values-section.astro';
+import ContactCtaSection from '../sections/shared/contact-cta-section.astro';
+import PartnerPropsSection from '../sections/partners/partner-props-section.astro';
+---
+
+<MainLayout
+	title="Partners"
+	description="Partner with Tidytrek. Get full pro access for guides, influencers, and organizations. Free for your community to sign up.">
+	<div class="partners-page">
+		<HeroSection />
+		<FeaturesSection />
+		<PartnerPropsSection />
+		<FoundersSection />
+		<ValuesSection />
+		<ContactCtaSection />
+	</div>
+</MainLayout>
+
+<style>
+	.partners-page {
+		min-height: 100%;
+		padding-top: calc(var(--navbar-height) + var(--space-8));
+		background-color: var(--color-bg-primary);
+	}
+</style>

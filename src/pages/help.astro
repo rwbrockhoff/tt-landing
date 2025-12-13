@@ -1,0 +1,144 @@
+---
+import MainLayout from '../layouts/main-layout.astro';
+import HelpSection from '../components/help/help-section.astro';
+import HelpItem from '../components/help/help-item.astro';
+import { Map, Mail } from 'lucide-astro';
+---
+
+<MainLayout
+	title="Help"
+	description="Get answers to common questions about using Tidytrek. Learn how to import gear, create packs, and make the most of your account.">
+	<div class="help-page">
+		<div class="readable-width flex flex-col gap-4">
+			<div class="page-header flex flex-col items-center gap-2 py-8">
+				<h1><Map size={32} /> How can we help?</h1>
+				<p class="subtitle">Answers to common questions about using Tidytrek</p>
+			</div>
+
+			<div class="flex flex-col gap-8">
+				<HelpSection title="Getting Started">
+					<HelpItem question="How do I import my gear from Lighterpack?">
+						<p>
+							Click the <strong>+ icon</strong> next to Packs in the sidebar, then select <strong>Import Pack</strong> and
+							paste your Lighterpack URL. We'll automatically import your categories, items, weights, and prices.
+						</p>
+					</HelpItem>
+					<HelpItem question="Is Tidytrek free?">
+						<p>
+							Yes! Tidytrek is free to use. Create up to 5 packs to share, organize gear in your gear closet, and save
+							other user's packs for reference or inspiration.
+						</p>
+						<p>
+							Pro adds features for serious adventurers who want access to food bag planning, shakedowns, analytics, and
+							more.
+						</p>
+					</HelpItem>
+					<HelpItem question="What's a gear closet?">
+						<p>
+							The gear closet is your personal gear library — a central place to store all your gear items. Add items
+							from your closet to any pack with one click, perfect for gear you use across multiple trips.
+						</p>
+						<p>Items added to a pack are independent copies — editing them won't affect your closet or other packs.</p>
+					</HelpItem>
+				</HelpSection>
+
+				<HelpSection title="Features">
+					<HelpItem question="What's a shakedown?">
+						<p>
+							A shakedown is when you ask for feedback on your gear setup from others who might have advice or more
+							experience. Usually it's a way to get feedback on your gear choices before hitting the trail.
+						</p>
+						<p>
+							In Tidytrek, you can create a shakedown "snapshot" of your current pack to share. This makes it super easy
+							to keep track of all your feedback in one place as your packs evolve.
+						</p>
+					</HelpItem>
+					<HelpItem question="What's a food bag?">
+						<p>
+							A food bag is a separate list for planning your meals and consumables. Track food weight separately from
+							your base weight and share your meal plan with others.
+						</p>
+					</HelpItem>
+					<HelpItem question="Can I share my packs and food bags?">
+						<p>
+							Yes! You can easily copy the link to a pack or food bag and share your setup. You can also make any pack
+							or food bag private if you don't want to share on your profile.
+						</p>
+					</HelpItem>
+					<HelpItem question="Can I export my data?">
+						<p>Yes! You can export any pack or food bag as a CSV file. Your data is always yours.</p>
+					</HelpItem>
+					<HelpItem question="Can I use Tidytrek on my phone?">
+						<p>
+							Yes! Tidytrek is a web app that works great on any device. No download needed — just open it in your
+							browser on desktop, tablet, or phone.
+						</p>
+					</HelpItem>
+					<HelpItem question="Can I change weight or currency units?">
+						<p>
+							You can easily update your preferred weight units and currency in your settings. You can also manually
+							switch any pack or food bag item to a different weight unit if needed.
+						</p>
+					</HelpItem>
+					<HelpItem question="Can I save other users' packs?">
+						<p>
+							Click the bookmark icon on any public pack to save it. Your bookmarks are a great way to collect packs for
+							reference or inspiration.
+						</p>
+					</HelpItem>
+				</HelpSection>
+			</div>
+
+			<div class="contact-section">
+				<h2>Still have questions?</h2>
+				<p>We usually respond within 1-2 days. We're happy to help!</p>
+				<a href="mailto:info@tidytrek.co" class="btn-sierra btn-md gap-2"><Mail size={18} /> Email Us</a>
+			</div>
+		</div>
+	</div>
+</MainLayout>
+
+<style>
+	.help-page {
+		min-height: 100%;
+		padding-top: calc(var(--navbar-height) + var(--space-8));
+		padding-bottom: var(--space-12);
+		background-color: var(--color-bg-primary);
+	}
+
+	.readable-width {
+		max-width: 800px;
+	}
+
+	h1 {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-3);
+		font-size: var(--font-size-8);
+		font-weight: var(--font-weight-bold);
+		color: var(--color-text-primary);
+	}
+
+	.subtitle {
+		text-align: center;
+		color: var(--color-text-secondary);
+	}
+
+	.contact-section {
+		text-align: center;
+		padding: var(--space-8) 0;
+	}
+
+	.contact-section h2 {
+		font-size: var(--font-size-7);
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-text-primary);
+		margin-bottom: var(--space-2);
+	}
+
+	.contact-section p {
+		color: var(--color-text-secondary);
+		margin-bottom: var(--space-6);
+	}
+</style>
